@@ -3,17 +3,38 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomecomponentComponent } from './PageComponents/homecomponent/homecomponent.component';
+import { HomeComponent } from './PageComponents/home/home.component';
+import { NavMenuComponent} from './SharedComponents/nav-menu/nav-menu.component';
+import { RouterModule, Routes } from '@angular/router';
+
+const appRoutes: Routes = [
+  { path: 'home', component: HomeComponent },
+  // { path: 'hero/:id',      component: HeroDetailComponent },
+  // {
+  //   path: 'heroes',
+  //   component: HeroListComponent,
+  //   data: { title: 'Heroes List' }
+  // },
+  // { path: '',
+  //   redirectTo: '/heroes',
+  //   pathMatch: 'full'
+  // },
+  // { path: '**', component: PageNotFoundComponent }
+];
 
 // TODO: Vivek [You need to add any modules that I ask you to do into this is the base module for the entire application]
 @NgModule({
   declarations: [
     AppComponent,
-    HomecomponentComponent
+    HomeComponent,
+    NavMenuComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule.forRoot(
+      appRoutes
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]

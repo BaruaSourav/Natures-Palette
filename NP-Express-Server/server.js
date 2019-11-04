@@ -14,6 +14,8 @@ mongoose.connect(config.DB, { useNewUrlParser: true }).then(
 
 //express app configuarition
 const app = express();
+app.use(bodyParser.json());
+app.use(cors());
 let port = process.env.PORT || 4000;
 
 
@@ -22,6 +24,6 @@ app.get('/', function (req, res) {
     res.send('Testing Routes.')
 })
 
-const server = app.listen(port,function () {
+const server = app.listen(port, function () {
     console.log('NPServer Listening on port ' + port);
 });
