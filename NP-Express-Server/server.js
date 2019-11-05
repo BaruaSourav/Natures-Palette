@@ -3,8 +3,11 @@ path = require('path');
 bodyParser = require('body-parser');
 cors = require('cors');
 mongoose = require('mongoose');
+var multer  =   require('multer');
+
 config = require('./DBConfiguration');
 
+//mongodb connection promise
 mongoose.Promise = global.Promise;
 mongoose.connect(config.DB, { useNewUrlParser: true }).then(
     () => { console.log('Database is connected') },
@@ -23,6 +26,7 @@ app.get('/', function (req, res) {
     res.send('Testing Routes.')
 })
 
+//starting up the server
 const server = app.listen(port, function () {
     console.log('NPServer Listening on port ' + port);
 });

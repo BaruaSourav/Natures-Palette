@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './PageComponents/home/home.component';
 import { NavMenuComponent} from './SharedComponents/nav-menu/nav-menu.component';
 import { RouterModule, Routes } from '@angular/router';
+import { UploadComponentComponent } from './PageComponents/upload-component/upload-component.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -27,7 +28,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
-    NavMenuComponent
+    NavMenuComponent,
+    UploadComponentComponent
   ],
   imports: [
     BrowserModule,
