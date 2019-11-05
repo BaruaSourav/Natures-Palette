@@ -8,7 +8,7 @@ import { NavMenuComponent} from './SharedComponents/nav-menu/nav-menu.component'
 import { RouterModule, Routes } from '@angular/router';
 
 const appRoutes: Routes = [
-  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
   // { path: 'hero/:id',      component: HeroDetailComponent },
   // {
   //   path: 'heroes',
