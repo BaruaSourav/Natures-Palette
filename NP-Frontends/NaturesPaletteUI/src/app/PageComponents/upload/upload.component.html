@@ -23,7 +23,7 @@
 
     <div class="card-footer">
       <div class="button_for_upload_component">
-        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#submissionModal">Start</button>
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal1">Start</button>
       </div>
     </div>
   </div>
@@ -56,48 +56,141 @@
   </div>
 </div>
 
-<!--Submission Modal-->
-<div class="modal fade" id="submissionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalScrollable">
-      Launch demo modal
-    </button>
-    
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+<!-- Modal -->
+    <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
+            <h5 class="modal-title" id="exampleModalScrollableTitle">Submission Steps</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            ...
+            <form>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputFirstName4">First Name</label>
+                  <input type="firstname" class="form-control" id="inputFirstName4" placeholder="First Name">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputLastName4">Last Name</label>
+                  <input type="lastname" class="form-control" id="inputLastName4" placeholder="Last Name">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputEmail4">Email</label>
+                  <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputInstituationAffiliation4">Institution Affiliation</label>
+                  <input type="password" class="form-control" id="inputInstituationAffiliation4" placeholder="Institution Affiliation">
+                </div>
+              </div>
+              
+              
+              <div class="form-row">
+               
+                <div class="form-group col-md-6">
+                  <label for="inputState">Type of Data</label>
+                  <select id="inputState" class="form-control">
+                    <option selected>Select Type of Data</option>
+                    <option>Refectance</option>
+                    <option>Transmittance</option>
+                    <option>Irradiance</option>
+                  </select>
+                </div>
+
+                <div class="form-group col-md-6">
+                  <label for="inputState">Source Data</label>
+                  <select id="inputState" class="form-control">
+                    <option selected>Select Source of Data</option>
+                    <option>Field</option>
+                    <option>Museum</option>
+                  </select>
+                </div>
+
+              </div>
+              
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <p>Have the Data been Published?</p>
+                  <div class="wrapper-class">
+                    <input type="radio" id="yes">
+                    <label for="yes">Yes</label>
+                    <input type="radio" id="no">
+                    <label for="no">No</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <p>Embargo?</p>
+                  <div class="wrapper-class">
+                    <input type="radio" id="yes">
+                    <label for="yes">Yes</label>
+                    <input type="radio" id="no">
+                    <label for="no">No</label>
+                  </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                  <label for="date">Date</label>
+                  <input type="date" class="form-control" id="date" placeholder="Date">
+                </div>
+              </div>
+            </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal2">Next</button>
           </div>
         </div>
       </div>
     </div>
+<!--Second Modal-->
+    <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalScrollableTitle">Submission Steps</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-row">
+                  <div class="col-md-8">
+                      <p class="text-info">Select your Metadata file</p>
+                      <form id="uploadForm">
+                        <div class="input-group mb-4">
+                          <div class="custom-file">
+                            <label class="custom-file-label" for="selectedfile">Choose file</label>
+                            <input type="file" class="" id="selectedfile" aria-describedby="selectedfile">
+                          </div>
+                        </div>
+                      </form>
+                  </div>
+
+                  <div class="col-md-8">
+                      <p class="text-info">Select your Rawdata file</p>
+                      <form id="uploadForm">
+                        <div class="input-group mb-4">
+                          <div class="custom-file">
+                            <label class="custom-file-label" for="selectedfile">Choose file</label>
+                            <input type="file" class="" id="selectedfile" aria-describedby="selectedfile">
+                          </div>
+                        </div>
+                      </form>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
