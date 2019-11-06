@@ -1,4 +1,4 @@
-// Submission schema for monngodb
+// Metadata information schema for monngodb
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
