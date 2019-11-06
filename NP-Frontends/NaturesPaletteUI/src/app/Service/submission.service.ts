@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { Submission } from './../Models/Submission';
+import { NaturesPaletteConfig } from './../NaturesPaletteConfig';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SubmissionService {
-
-  uri = 'http://localhost:4000/business';
-  constructor(private http: HttpClient) { }
+  config: NaturesPaletteConfig;
+  uri: string;
+  constructor(private http: HttpClient) {
+    this.config = new NaturesPaletteConfig();
+    this.uri = this.config.apiurl;
+  }
 
   addSubmission(submission: Submission) {
     // const obj = {
