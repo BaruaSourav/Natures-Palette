@@ -3,31 +3,31 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let Submission = new Schema({
-    recordid: {
+    recordId: {
         type: Number
     },
-    researcherid: {
+    researcherId: {
         type: Number
     },
-    metadatacollectionId: {
+    metadataCollectionId: {
         type: Number
     },
-    typeofdata: {
+    typeOfData: {
         type: String
     },
-    datafrom: {
+    dataFrom: {
         type: String
     },
-    ispublished: {
+    isPublished: {
         type: Boolean
     },
     reference: {
         type: String
     },
-    isembargo :{
+    isEmbargo :{
         type: Boolean
     },
-    releasedate :{
+    releasDate :{
         type: Date
     },
     doi :{
