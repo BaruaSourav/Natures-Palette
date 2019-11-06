@@ -7,9 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UploadComponent implements OnInit {
 
-  constructor() { }
+  public hasAgreed: boolean;
+  firstname: string;
+  constructor() {
+    this.hasAgreed = false;
+  }
 
   ngOnInit() {
+  }
+
+  agreeCheckBoxChanged() {
+    if (this.hasAgreed)
+    {
+      this.hasAgreed = false;
+    } else {
+      this.hasAgreed = true;
+    }
   }
 
 }

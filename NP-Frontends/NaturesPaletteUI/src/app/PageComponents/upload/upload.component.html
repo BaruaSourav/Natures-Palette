@@ -15,7 +15,7 @@
         supply their spectral data without going through onerous data processing.
         <div class="checkbox_for_upload_componenet">
           <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" (change)="agreeCheckBoxChanged()">
               <label class="form-check-label" for="inlineCheckbox1">I agree</label>
           </div>
         </div>
@@ -23,7 +23,7 @@
 
     <div class="card-footer">
       <div class="button_for_upload_component">
-        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal1">Start</button>
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal1" [disabled]="!this.hasAgreed">Start</button>
       </div>
     </div>
   </div>
