@@ -1,5 +1,5 @@
 // Submission Model
-export default class Submission {
+export class Submission {
   Name: string;
   Email: string;
   InstAffiliation: string;
