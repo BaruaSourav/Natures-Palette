@@ -17,7 +17,7 @@ import {SubmissionService} from './Service/submission.service';
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'upload', component: UploadComponent },
-  // { path: 'hero/:id',      component: HeroDetailComponent },
+  // { path: 'hero/:id', component: HeroDetailComponent },
   // {
   //   path: 'heroes',
   //   component: HeroListComponent,
