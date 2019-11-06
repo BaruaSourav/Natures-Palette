@@ -33,7 +33,7 @@
     <div class="col-md-6">
       <div class="card card_for_template mb-4 mt-4 shadow-lg">
         <div class="card-body card_body_for_upload_componenet">
-          <p>Template for <b>Refectance</b> Metadata</p>
+          <p>Template for <b>Reflectance</b> Metadata</p>
           <a class="a_tag_for_field_option" href="#Specify_a_Hyperlink_Target_href">Field</a> <a href="#Specify_a_Hyperlink_Target_href">Museum</a>
         </div>
       </div>
@@ -61,10 +61,10 @@
       <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalScrollableTitle">Submission Steps</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <h5 class="modal-title" id="step1modaltitle">Submission Step 1: Information</h5>
+            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
-            </button>
+            </button> -->
           </div>
           <div class="modal-body">
             <form>
@@ -115,9 +115,9 @@
                 <div class="form-group col-md-6">
                   <p>Have the Data been Published?</p>
                   <div class="wrapper-class">
-                    <input type="radio" id="yes">
+                    <input type="radio" name="isPublished">
                     <label for="yes">Yes</label>
-                    <input type="radio" id="no">
+                    <input type="radio" name="isPublished">
                     <label for="no">No</label>
                   </div>
                 </div>
@@ -127,9 +127,9 @@
                 <div class="form-group col-md-6">
                   <p>Embargo?</p>
                   <div class="wrapper-class">
-                    <input type="radio" id="yes">
+                    <input type="radio" name="isEmbargo">
                     <label for="yes">Yes</label>
-                    <input type="radio" id="no">
+                    <input type="radio" name="isEmbargo">
                     <label for="no">No</label>
                   </div>
                 </div>
@@ -153,7 +153,7 @@
         <div class="modal-dialog modal-dialog-scrollable" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalScrollableTitle">Submission Steps</h5>
+              <h5 class="modal-title" id="exampleModalScrollableTitle">Submission Step 2: Upload files</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
