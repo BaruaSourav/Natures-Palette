@@ -1,0 +1,24 @@
+.checkbox_for_upload_componenet {
+    text-align: center;
+    font-size: 22px;
+}
+
+.button_for_upload_component {
+    text-align: center;
+}
+
+.btn {
+    width: 200px;
+}
+
+.card_body_for_upload_componenet {
+    text-align: center;
+}
+
+.a_tag_for_field_option {
+    margin-right: 10px;
+}
+
+.card_for_template {
+    background-color: rgb(208, 241, 253);
+}
