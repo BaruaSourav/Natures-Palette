@@ -5,13 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './PageComponents/home/home.component';
 import { NavMenuComponent} from './SharedComponents/nav-menu/nav-menu.component';
+import { UploadComponent } from './PageComponents/upload/upload.component';
 import { RouterModule, Routes } from '@angular/router';
-import { UploadComponentComponent } from './PageComponents/upload-component/upload-component.component';
+
 // Services
 import {SubmissionService} from './Service/submission.service';
 
+
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'upload', component: UploadComponent },
   // { path: 'hero/:id',      component: HeroDetailComponent },
   // {
   //   path: 'heroes',
@@ -31,7 +34,7 @@ const appRoutes: Routes = [
     AppComponent,
     HomeComponent,
     NavMenuComponent,
-    UploadComponentComponent
+    UploadComponent
   ],
   imports: [
     BrowserModule,
