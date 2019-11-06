@@ -7,6 +7,8 @@ import { HomeComponent } from './PageComponents/home/home.component';
 import { NavMenuComponent} from './SharedComponents/nav-menu/nav-menu.component';
 import { RouterModule, Routes } from '@angular/router';
 import { UploadComponentComponent } from './PageComponents/upload-component/upload-component.component';
+// Services
+import {SubmissionService} from './Service/submission.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -38,7 +40,9 @@ const appRoutes: Routes = [
       appRoutes
     )
   ],
-  providers: [],
+  providers: [
+    SubmissionService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
