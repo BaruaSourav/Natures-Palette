@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './PageComponents/home/home.component';
 import { NavMenuComponent} from './SharedComponents/nav-menu/nav-menu.component';
 import { UploadComponent } from './PageComponents/upload/upload.component';
+import { FooterComponent } from './SharedComponents/footer/footer.component';
+
 import { RouterModule, Routes } from '@angular/router';
 
 // Services
@@ -34,7 +36,8 @@ const appRoutes: Routes = [
     AppComponent,
     HomeComponent,
     NavMenuComponent,
-    UploadComponent
+    UploadComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
