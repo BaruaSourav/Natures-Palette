@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-let Submission = new Schema({
+let SubmissionSchema = new Schema({
     recordId: {
         type: Number
     },
@@ -38,4 +38,4 @@ let Submission = new Schema({
     collection: 'submission'
 });
 
-module.exports = mongoose.model('Submission', Submission);
+module.exports = mongoose.model('Submission', SubmissionSchema);

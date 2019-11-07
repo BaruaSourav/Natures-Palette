@@ -19,7 +19,7 @@ export class SubmissionService {
     // };
     console.log(submission);
 
-    this.http.post(`${this.uri}/addSubmission`, submission)
+    this.http.post(`${this.uri}/submissions/add`, submission)
         .subscribe(res => console.log('Done'));
   }
 }

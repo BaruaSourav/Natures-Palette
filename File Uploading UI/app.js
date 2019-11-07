@@ -36,12 +36,6 @@ var storage =   multer.diskStorage({
 
 var upload = multer({ storage : storage}).single('file');
 
-// will work on download later - SB
-// app.get('/download', function(req, res){
-//   const file = `${__dirname}/upload-folder/dramaticpenguin.MOV`;
-//   res.download(file); // Set disposition and send it.
-// });
-
 app.get('/',function(req,res){
 
   res.sendFile(__dirname + "/index.html");

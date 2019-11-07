@@ -18,10 +18,15 @@ mongoose.connect(config.DB, { useNewUrlParser: true }).then(
 
 //express app configuarition
 const app = express();
-app.use('/submission',submissionroute);
+//pointing to the submission route
+
+//app.use(connect.bodyParser());
 app.use(bodyParser.json());
 app.use(cors());
+
+app.use('/submissions',submissionroute);
 let port = process.env.PORT || 4000;
+
 
 
 //Routes

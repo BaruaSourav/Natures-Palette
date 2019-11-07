@@ -2,26 +2,34 @@
 const express = require('express');
 const app = express();
 const submissionroutes = express.Router();
+var multer = require('multer');
+
 
 // Require Submission model in our routes module
 let SubmissionModel = require('../Models/SubmissionModel');
 
-// Defined store route
-submissionroutes.route('/add').post(function (req, res) {
+var upload = multer()
+// Defined store route for submission information
+submissionroutes.route('/add').post(upload.none(), function (req, res) {
   let submission = new SubmissionModel(req.body);
   submission.save()
     .then(submission => {
-      res.status(200).json({'Success': 'The submission stored successfully'});
+      res.status(200).json(
+        {
+          'Success': 'The submission stored successfully',
+          'body': req.body
+        }
+      );
     })
     .catch(err => {
-    res.status(400).send("Unable to save to database");
+      res.status(400).send("Unable to save to database");
     });
 });
 
 // Defined get data(index or listing) route
 submissionroutes.route('/').get(function (req, res) {
-    SubmissionModel.find(function (err, submissions){
-    if(err){
+  SubmissionModel.find(function (err, submissions) {
+    if (err) {
       console.log(err);
     }
     else {
@@ -66,4 +74,4 @@ submissionroutes.route('/').get(function (req, res) {
 //     });
 // });
 
-module.exports = businessRoutes;
+module.exports = submissionroutes;
