@@ -72,44 +72,45 @@
           <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="inputFirstName4">First Name</label>
-                <input type="firstname" class="form-control" id="inputFirstName4" placeholder="First Name" required>
-            </div>
+                <input [formControl]="firstname" type="firstname" class="form-control" id="inputFirstName4" placeholder="First Name" required>
+            </div>{{this.firstname.value}}
+            
 
             <div class="form-group col-md-6">
                 <label for="inputLastName4">Last Name</label>
-                <input type="lastname" class="form-control" id="inputLastName4" placeholder="Last Name" required>
-            </div>
+                <input [formControl]="lastname" type="lastname" class="form-control" id="inputLastName4" placeholder="Last Name" required>
+            </div>{{this.lastname.value}}
 
             <div class="form-group col-md-6">
                 <label for="inputEmail4">Email</label>
-                <input type="email" class="form-control" id="inputEmail4" placeholder="Email" required>
-            </div>
+                <input [formControl]="email" type="email" class="form-control" id="inputEmail4" placeholder="Email" required>
+            </div>{{this.email.value}}
 
             <div class="form-group col-md-6">
                 <label for="inputInstituationAffiliation4">Institution Affiliation</label>
-                <input type="password" class="form-control" id="inputInstituationAffiliation4" placeholder="Institution Affiliation">
-            </div>
+                <input [formControl]="instituationaffiliation" type="inputinstituation" class="form-control" id="inputInstituationAffiliation4" placeholder="Institution Affiliation">
+            </div>{{this.instituationaffiliation.value}}
           </div>
 
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputState">Type of Data</label>
-              <select id="inputState" class="form-control" required>
+              <select [formControl]="typeofdata" id="inputState" class="form-control" required>
                 <option selected>Select Type of Data</option>
                 <option>Refectance</option>
                 <option>Transmittance</option>
                 <option>Irradiance</option>
               </select>
-            </div>
+            </div>{{this.typeofdata.value}}
 
             <div class="form-group col-md-6">
               <label for="inputState">Source Data</label>
-              <select id="inputState" class="form-control" required>
+              <select [formControl]="sourceofdata" id="inputState" class="form-control" required>
                 <option selected>Select Source of Data</option>
                 <option>Field</option>
                 <option>Museum</option>
               </select>
-            </div>
+            </div>{{this.sourceofdata.value}}
           </div>
 
           <div class="form-row">
@@ -127,30 +128,30 @@
           <div class="form-row" [hidden]="!this.hasChangedForDataPublish">
             <div class="form-group col-md-6">
                 <label for="inputReferenceNumber4">Reference Number</label>
-                <input type="referencenumber" class="form-control" id="inputReferenceNumber4" placeholder="Reference Number">
-            </div>
+                <input [formControl]="referencenumber" type="referencenumber" class="form-control" id="inputReferenceNumber4" placeholder="Reference Number">
+            </div>{{this.referencenumber.value}}
 
             <div class="form-group col-md-6">
                 <label for="inputdoi4">Digital Object Identifier</label>
-                <input type="digitalobjectidentifier" class="form-control" id="inputdoi4" placeholder="Digital Object Identifier">
-            </div>
+                <input [formControl]="doi" type="digitalobjectidentifier" class="form-control" id="inputdoi4" placeholder="Digital Object Identifier">
+            </div>{{this.doi.value}}
           </div>
 
           <div class="form-row">
             <div class="form-group col-md-6">
               <p>Embargo?</p>
               <div class="wrapper-class ml-1">
-                  <input class="mr-1" type="radio" name="isEmbargo" (change)="hideDivWhenEmbargoSelected()">
+                  <input formControlName="embargo" class="mr-1" type="radio" name="isEmbargo" (change)="hideDivWhenEmbargoSelected()">
                   <label class="mr-2" for="yes">Yes</label>
-                  <input class="mr-1" type="radio" name="isEmbargo" (change)="hideDivWhenEmbargoSelected()">
+                  <input formControlName="embargo" class="mr-1" type="radio" name="isEmbargo" (change)="hideDivWhenEmbargoSelected()">
                   <label for="no">No</label>
-              </div>
+              </div>{{this.embargo.value}}
             </div>
 
             <div class="form-group col-md-6" [hidden]="!this.hasChangedForEmbargo">
                 <label for="date">Date</label>
-                <input type="date" class="form-control" id="date" placeholder="Date" required>
-            </div>
+                <input [formControl]="embargodate" type="date" class="form-control" id="date" placeholder="Date" required>
+            </div>{{this.date.value}}
           </div>
         </form>
       </div>
@@ -183,9 +184,9 @@
                 <div class="input-group mb-4">
                   <div class="custom-file">
                     <label class="custom-file-label" for="selectedfile">Choose file</label>
-                    <input type="file" class="" id="selectedfile" aria-describedby="selectedfile">
+                    <input [formControl]="metadataurl" type="file" class="" id="selectedfile" aria-describedby="selectedfile">
                   </div>
-                </div>
+                </div>{{this.metadataurl.value}}
               </form>
             </div>
 
@@ -195,11 +196,11 @@
                 <div class="input-group mb-4">
                   <div class="custom-file">
                     <label class="custom-file-label" for="selectedfile">Choose file</label>
-                    <input type="file" class="" id="selectedfile" aria-describedby="selectedfile">
+                    <input [formControl]="rawfileurl" type="file" class="" id="selectedfile" aria-describedby="selectedfile">
                   </div>
                 </div>
               </form>
-            </div>
+            </div>{{this.rawfileurl.value}}
           </div>
         </form>
       </div>

@@ -10,4 +10,6 @@ export class Submission {
   SubmissionDate: Date;
   MetadataFileUrl: string;
   RawFileUrl: string;
+  Doi: string;
+  ReferenceNumber: string;
 }

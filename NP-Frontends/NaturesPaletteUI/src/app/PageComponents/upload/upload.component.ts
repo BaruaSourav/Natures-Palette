@@ -19,6 +19,16 @@ export class UploadComponent implements OnInit {
   firstname = new FormControl('');
   lastname = new FormControl('');
   typeofdata = new FormControl('');
+  email = new FormControl('');
+  instituationaffiliation = new FormControl('');
+  sourceofdata = new FormControl ('');
+  databeenpublished = new FormControl ('');
+  embargo = new FormControl ('');
+  embargodate = new FormControl('');
+  doi = new FormControl('');
+  referencenumber = new FormControl('');
+  metadataurl = new FormControl('');
+  rawfileurl = new FormControl('');
 
 
 
@@ -43,6 +53,16 @@ export class UploadComponent implements OnInit {
   saveSubmissionInformation() {
     //Constructing the submissioninfo instance
     this.submissionInfo.TypeOfData = this.typeofdata.value;
+    this.submissionInfo.DataSource = this.sourceofdata.value;
+    this.submissionInfo.Name = this.firstname.value;
+    this.submissionInfo.Name = this.lastname.value;
+    this.submissionInfo.Email = this.email.value;
+    this.submissionInfo.InstAffiliation = this.instituationaffiliation.value;
+    this.submissionInfo.Doi = this.doi.value;
+    this.submissionInfo.ReferenceNumber = this.referencenumber.value;
+    this.submissionInfo.MetadataFileUrl = this.metadataurl.value;
+    this.submissionInfo.RawFileUrl = this.rawfileurl.value;
+    
     console.log(this.submissionInfo);
     //TODO: Vivek
 
