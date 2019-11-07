@@ -43,7 +43,7 @@ export class UploadComponent implements OnInit {
   saveSubmissionInformation() {
     //Constructing the submissioninfo instance
     this.submissionInfo.TypeOfData = this.typeofdata.value;
-    console.log(this.submissionInfo);
+    console.log(this.typeofdata.value);
     //TODO: Vivek
 
     //passing submissioninfo to service
