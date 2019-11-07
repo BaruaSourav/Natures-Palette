@@ -11,11 +11,14 @@ Developed for course COMP - 6905 MUN.
 - ~Working on setting up the environment.~
 - ~Setting up the server side Express Project.~
 - ~Setting up the Angular UI project.~
-- Working on Submission Service 
-- Working on home and upload feature UI
+- ~Working on Submission Service~ 
+- ~Working on home and upload feature UI~
+- ~Setting up multer middleware for the Express application (Metadata files, Raw files,Temporary validation directory)~
+- Working on metadata uploading flow
 
-# Completed Modules
+# Completed Tasks
 - File Uploading Module Done.
 - Started new Angular UI Project.
 - Angular and NodeJS application directory structure is done.
 - Created Home & Upload Component.
+- Implemented persistance of submission information.
