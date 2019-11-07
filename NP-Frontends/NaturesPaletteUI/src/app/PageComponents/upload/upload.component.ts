@@ -8,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export class UploadComponent implements OnInit {
 
   public hasAgreed: boolean;
+  public hasChangedForDataPublish: boolean;
+  public hasChangedForEmbargo: boolean;
   firstname: string;
   constructor() {
     this.hasAgreed = false;
+    this.hasChangedForDataPublish = false;
+    this.hasChangedForEmbargo = false;
   }
 
   ngOnInit() {
@@ -22,6 +26,24 @@ export class UploadComponent implements OnInit {
       this.hasAgreed = false;
     } else {
       this.hasAgreed = true;
+    }
+  }
+
+  hideDivWhenRadioButtonChanged() {
+    if (this.hasChangedForDataPublish)
+    {
+      this.hasChangedForDataPublish = false;
+    } else {
+      this.hasChangedForDataPublish = true;
+    }
+  }
+
+  hideDivWhenEmbargoSelected() {
+    if (this.hasChangedForEmbargo)
+    {
+      this.hasChangedForEmbargo = false;
+    } else {
+      this.hasChangedForEmbargo = true;
     }
   }
 
