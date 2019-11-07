@@ -77,6 +77,8 @@ export class UploadComponent implements OnInit {
     this.submissionInfo.ReferenceNumber = this.referencenumber.value;
     this.submissionInfo.MetadataFileUrl = this.metadataurl.value;
     this.submissionInfo.RawFileUrl = this.rawfileurl.value;
+    this.submissionInfo.IsEmbargo = this.isEmbargo;
+    this.submissionInfo.IsPublished = this.isPublished;
     console.log(this.submissionInfo);
 
     // passing submissioninfo to service
