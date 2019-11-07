@@ -152,14 +152,14 @@
 
           <button type="button" class="btn bg-warning" (click)="saveSubmissionInformation()">Test Submit</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal2">Next</button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadFilesModal">Next</button>
       </div>
     </div>
   </div>
 </div>
 
 <!--Second step Modal-->
-<div class="modal fade" id="modal2" style="min-height: 80vh !important;" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle"
+<div class="modal fade" id="uploadFilesModal" style="min-height: 80vh !important;" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable" role="document">
     <div class="modal-content">
@@ -180,7 +180,7 @@
                     <label class="custom-file-label" for="selectedfile">Choose file</label>
                     <input [formControl]="metadataurl" type="file" class="" id="selectedfile" aria-describedby="selectedfile">
                   </div>
-                </div>{{this.metadataurl.value}}
+                </div>
               </form>
             </div>
 

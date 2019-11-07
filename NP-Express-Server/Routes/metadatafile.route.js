@@ -1,21 +1,27 @@
-// Submission.route.js
+// metadatafile.route.js
 const express = require('express');
 const app = express();
-const submissionroutes = express.Router();
+const metadataroutes = express.Router();
+
 var multer = require('multer');
 
-// Submission Model
-let SubmissionModel = require('../Models/SubmissionModel');
 
-var upload = multer()
-// Defined store route for submission information
-submissionroutes.route('/add').post(upload.none(), function (req, res) {
+// MetadataFileModel 
+let MetadataFileModel = require('../Models/MetadataFileModel');
+
+var upload = multer({ storage : storage}).single('file');
+// Defining validation route for metadata file
+
+
+
+// Defined store route for metadatafile
+metadataroutes.route('/add').post(upload.none(), function (req, res) {
   let submission = new SubmissionModel(req.body);
   submission.save()
     .then(submission => {
       res.status(200).json(
         {
-          'Success': 'The submission stored successfully',
+          'Success': 'The RawfileInformation stored successfully',
           'body': req.body
         }
       );
@@ -26,8 +32,8 @@ submissionroutes.route('/add').post(upload.none(), function (req, res) {
 });
 
 // Defined get data(index or listing) route
-submissionroutes.route('/').get(function (req, res) {
-  SubmissionModel.find(function (err, submissions) {
+metadataroutes.route('/').get(function (req, res) {
+  MetadataFileModel.find(function (err, submissions) {
     if (err) {
       console.log(err);
     }
@@ -38,7 +44,7 @@ submissionroutes.route('/').get(function (req, res) {
 });
 
 // // Defined edit route
-// businessRoutes.route('/edit/:id').get(function (req, res) {
+// metadataroutes.route('/edit/:id').get(function (req, res) {
 //   let id = req.params.id;
 //   Business.findById(id, function (err, business){
 //       res.json(business);
@@ -46,7 +52,7 @@ submissionroutes.route('/').get(function (req, res) {
 // });
 
 // //  Defined update route
-// businessRoutes.route('/update/:id').post(function (req, res) {
+// metadataroutes.route('/update/:id').post(function (req, res) {
 //     Business.findById(req.params.id, function(err, next, business) {
 //     if (!business)
 //       return next(new Error('Could not load Document'));
@@ -66,7 +72,7 @@ submissionroutes.route('/').get(function (req, res) {
 // });
 
 // // Defined delete | remove | destroy route
-// businessRoutes.route('/delete/:id').get(function (req, res) {
+// metadataroutes.route('/delete/:id').get(function (req, res) {
 //     Business.findByIdAndRemove({_id: req.params.id}, function(err, business){
 //         if(err) res.json(err);
 //         else res.json('Successfully removed');

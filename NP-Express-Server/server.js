@@ -8,6 +8,7 @@ var multer  =   require('multer');
 config = require('./DBConfiguration');
 
 const submissionroute = require('./routes/submission.route');
+const metadataroute = require('./routes/metadatafile.route')
 
 //mongodb connection promise
 mongoose.Promise = global.Promise;
@@ -23,8 +24,9 @@ const app = express();
 //app.use(connect.bodyParser());
 app.use(bodyParser.json());
 app.use(cors());
-
+// routes
 app.use('/submissions',submissionroute);
+app.use('/metadata',metadataoute);
 let port = process.env.PORT || 4000;
 
 
