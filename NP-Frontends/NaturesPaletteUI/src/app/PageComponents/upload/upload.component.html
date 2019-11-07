@@ -1,196 +1,188 @@
-
 <div class="container">
-  <div class="card mb-4 mt-4 shadow-lg">
-    <div class="card-body">
-        <h2 class="featurette-heading" style="text-align: center;">Submission Instruction</h2>
-        The roles of light environment, colouration, and colour vision have been fundamental questions in animal
-        ecology for the last several decades. More
-        recently, researchers have also taken interest in how anthropogenic disturbances in light environments may
-        influence the behaviour and welfare of wild animals.
-        The research projects that require the quantification of colours typically require thousands of spectral
-        measurements. But the datasets that are available through repositories are not curated in a way that makes
-        them searchable and/or do not provide the metadata that would easily allow their inclusion in other
-        studies.<br>
-        This advance digital repository will provide a curatorial pipeline that will allow researchers to easily
-        supply their spectral data without going through onerous data processing.
-        <div class="checkbox_for_upload_componenet">
-          <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" (change)="agreeCheckBoxChanged()">
-              <label class="form-check-label" for="inlineCheckbox1">I agree</label>
-          </div>
+    <div class="card mb-4 mt-4 shadow-lg">
+        <div class="card-body">
+            <h2 class="featurette-heading" style="text-align: center;">Submission Instruction</h2>
+            Before starting the uploading process, please prepare your data set and make sure the meta data is available with you which is associated with the raw data that your going to upload. The meta data should be in a proper format with required details. Please
+            check below template for meta data file for field and museum type data. This repository will offer an open opportunity to researches worldwide to collect spectral data for their research purpose, therefor please make sure that you are providing
+            is legitimate and it’s owned by you. Please don’t upload any data that is protected by copy rights or patents. In such case this repository won’t take any responsibility and won’t pay any penalties to any authorities.
+            <div class="checkbox_for_upload_componenet">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" (change)="agreeCheckBoxChanged()">
+                    <label class="form-check-label" for="inlineCheckbox1">I agree</label>
+                </div>
+            </div>
         </div>
-      </div>
 
-    <div class="card-footer">
-      <div class="button_for_upload_component">
-        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal1" [disabled]="!this.hasAgreed">Start</button>
-      </div>
+        <div class="card-footer">
+            <div class="button_for_upload_component">
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal1" [disabled]="!this.hasAgreed">Start</button>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-      <div class="card card_for_template mb-4 mt-4 shadow-lg">
-        <div class="card-body card_body_for_upload_componenet">
-          <p>Template for <b>Reflectance</b> Metadata</p>
-          <a class="a_tag_for_field_option" href="#Specify_a_Hyperlink_Target_href">Field</a> <a href="#Specify_a_Hyperlink_Target_href">Museum</a>
-        </div>
-      </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="card card_for_template mb-4 mt-4 shadow-lg">
+                <div class="card-body card_body_for_upload_componenet">
+                    <p>Template for <b>Reflectance</b> Metadata</p>
+                    <a class="a_tag_for_field_option" href="assets/Data/Field-based reflectance template metadata.csv">Field</a> <a href="assets/Data/Museum reflectance template metadata.csv">Museum</a>
+                </div>
+            </div>
 
-      <div class="card card_for_template mb-4 mt-4 shadow-lg">
-        <div class="card-body card_body_for_upload_componenet">
-          <p>Template for <b>Transmittance</b> Metadata</p>
-          <a class="a_tag_for_field_option" href="#Specify_a_Hyperlink_Target_href">Field</a> <a href="#Specify_a_Hyperlink_Target_href">Museum</a>
-        </div>
-      </div>
+            <div class="card card_for_template mb-4 mt-4 shadow-lg">
+                <div class="card-body card_body_for_upload_componenet">
+                    <p>Template for <b>Transmittance</b> Metadata</p>
+                    <a class="a_tag_for_field_option" href="#Specify_a_Hyperlink_Target_href">Field</a> <a href="#Specify_a_Hyperlink_Target_href">Museum</a>
+                </div>
+            </div>
 
-      <div class="card card_for_template mb-4 mt-4 shadow-lg">
-        <div class="card-body card_body_for_upload_componenet">
-          <p>Template for <b>Irradiance</b> Metadata</p>
-          <a href="#Specify_a_Hyperlink_Target_href">Field</a>
+            <div class="card card_for_template mb-4 mt-4 shadow-lg">
+                <div class="card-body card_body_for_upload_componenet">
+                    <p>Template for <b>Irradiance</b> Metadata</p>
+                    <a class="a_tag_for_field_option" href="#Specify_a_Hyperlink_Target_href">Field</a> <a href="#Specify_a_Hyperlink_Target_href">Museum</a>
+                </div>
+            </div>
         </div>
-      </div>
+        <div class="col-md-3"></div>
     </div>
-    <div class="col-md-3"></div>
-  </div>
 </div>
 
 <!-- Modal -->
-    <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-scrollable" role="document">
+<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="step1modaltitle">Submission Step 1: Information</h5>
-            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <div class="modal-header">
+                <h5 class="modal-title" id="step1modaltitle">Submission Step 1: Information</h5>
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button> -->
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="inputFirstName4">First Name</label>
-                  <input type="firstname" class="form-control" id="inputFirstName4" placeholder="First Name">
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="inputLastName4">Last Name</label>
-                  <input type="lastname" class="form-control" id="inputLastName4" placeholder="Last Name">
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="inputEmail4">Email</label>
-                  <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="inputInstituationAffiliation4">Institution Affiliation</label>
-                  <input type="password" class="form-control" id="inputInstituationAffiliation4" placeholder="Institution Affiliation">
-                </div>
-              </div>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputFirstName4">First Name</label>
+                            <input type="firstname" class="form-control" id="inputFirstName4" placeholder="First Name">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputLastName4">Last Name</label>
+                            <input type="lastname" class="form-control" id="inputLastName4" placeholder="Last Name">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Email</label>
+                            <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputInstituationAffiliation4">Institution Affiliation</label>
+                            <input type="password" class="form-control" id="inputInstituationAffiliation4" placeholder="Institution Affiliation">
+                        </div>
+                    </div>
 
 
-              <div class="form-row">
+                    <div class="form-row">
 
-                <div class="form-group col-md-6">
-                  <label for="inputState">Type of Data</label>
-                  <select id="inputState" class="form-control">
+                        <div class="form-group col-md-6">
+                            <label for="inputState">Type of Data</label>
+                            <select id="inputState" class="form-control">
                     <option selected>Select Type of Data</option>
                     <option>Refectance</option>
                     <option>Transmittance</option>
                     <option>Irradiance</option>
                   </select>
-                </div>
+                        </div>
 
-                <div class="form-group col-md-6">
-                  <label for="inputState">Source Data</label>
-                  <select id="inputState" class="form-control">
+                        <div class="form-group col-md-6">
+                            <label for="inputState">Source Data</label>
+                            <select id="inputState" class="form-control">
                     <option selected>Select Source of Data</option>
                     <option>Field</option>
                     <option>Museum</option>
                   </select>
-                </div>
+                        </div>
 
-              </div>
+                    </div>
 
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <p>Have the Data been Published?</p>
-                  <div class="wrapper-class">
-                    <input type="radio" name="isPublished">
-                    <label for="yes">Yes</label>
-                    <input type="radio" name="isPublished">
-                    <label for="no">No</label>
-                  </div>
-                </div>
-              </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <p>Have the Data been Published?</p>
+                            <div class="wrapper-class">
+                                <input type="radio" name="isPublished">
+                                <label for="yes">Yes</label>
+                                <input type="radio" name="isPublished">
+                                <label for="no">No</label>
+                            </div>
+                        </div>
+                    </div>
 
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <p>Embargo?</p>
-                  <div class="wrapper-class">
-                    <input type="radio" name="isEmbargo">
-                    <label for="yes">Yes</label>
-                    <input type="radio" name="isEmbargo">
-                    <label for="no">No</label>
-                  </div>
-                </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <p>Embargo?</p>
+                            <div class="wrapper-class">
+                                <input type="radio" name="isEmbargo">
+                                <label for="yes">Yes</label>
+                                <input type="radio" name="isEmbargo">
+                                <label for="no">No</label>
+                            </div>
+                        </div>
 
-                <div class="form-group col-md-6">
-                  <label for="date">Date</label>
-                  <input type="date" class="form-control" id="date" placeholder="Date">
-                </div>
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal2">Next</button>
-          </div>
+                        <div class="form-group col-md-6">
+                            <label for="date">Date</label>
+                            <input type="date" class="form-control" id="date" placeholder="Date">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal2">Next</button>
+            </div>
         </div>
-      </div>
     </div>
+</div>
 <!--Second step Modal-->
-    <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-          <div class="modal-content">
+<div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalScrollableTitle">Submission Step 2: Upload files</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <h5 class="modal-title" id="exampleModalScrollableTitle">Submission Step 2: Upload files</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              <form>
-                <div class="form-row">
-                  <div class="col-md-8">
-                      <p class="text-info">Select your Metadata file</p>
-                      <form id="uploadForm">
-                        <div class="input-group mb-4">
-                          <div class="custom-file">
-                            <label class="custom-file-label" for="selectedfile">Choose file</label>
-                            <input type="file" class="" id="selectedfile" aria-describedby="selectedfile">
-                          </div>
+                <form>
+                    <div class="form-row">
+                        <div class="col-md-8">
+                            <p class="text-info">Select your Metadata file</p>
+                            <form id="uploadForm">
+                                <div class="input-group mb-4">
+                                    <div class="custom-file">
+                                        <label class="custom-file-label" for="selectedfile">Choose file</label>
+                                        <input type="file" class="" id="selectedfile" aria-describedby="selectedfile">
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                      </form>
-                  </div>
 
-                  <div class="col-md-8">
-                      <p class="text-info">Select your Rawdata file</p>
-                      <form id="uploadForm">
-                        <div class="input-group mb-4">
-                          <div class="custom-file">
-                            <label class="custom-file-label" for="selectedfile">Choose file</label>
-                            <input type="file" class="" id="selectedfile" aria-describedby="selectedfile">
-                          </div>
+                        <div class="col-md-8">
+                            <p class="text-info">Select your Rawdata file</p>
+                            <form id="uploadForm">
+                                <div class="input-group mb-4">
+                                    <div class="custom-file">
+                                        <label class="custom-file-label" for="selectedfile">Choose file</label>
+                                        <input type="file" class="" id="selectedfile" aria-describedby="selectedfile">
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                      </form>
-                  </div>
-                </div>
-              </form>
+                    </div>
+                </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Submit</button>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
+</div>
