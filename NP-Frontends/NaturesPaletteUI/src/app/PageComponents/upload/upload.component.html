@@ -65,94 +65,99 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="step1modaltitle">Submission Step 1: Information</h5>
-        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button> -->
       </div>
+
       <div class="modal-body">
         <form>
           <div class="form-row">
             <div class="form-group col-md-6">
-              <label for="firstname">First Name</label>
-              <input [formControl]="firstname" type="firstname" class="form-control" id="firstname"
-                placeholder="First Name">
-              {{firstname.value}}
+                <label for="inputFirstName4">First Name</label>
+                <input type="firstname" class="form-control" id="inputFirstName4" placeholder="First Name" required>
             </div>
+
             <div class="form-group col-md-6">
-              <label for="inputLastName4">Last Name</label>
-              <input type="lastname" class="form-control" id="inputLastName4" placeholder="Last Name">
+                <label for="inputLastName4">Last Name</label>
+                <input type="lastname" class="form-control" id="inputLastName4" placeholder="Last Name" required>
             </div>
+
             <div class="form-group col-md-6">
-              <label for="inputEmail4">Email</label>
-              <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                <label for="inputEmail4">Email</label>
+                <input type="email" class="form-control" id="inputEmail4" placeholder="Email" required>
             </div>
+
             <div class="form-group col-md-6">
-              <label for="inputInstituationAffiliation4">Institution Affiliation</label>
-              <input type="password" class="form-control" id="inputInstituationAffiliation4"
-                placeholder="Institution Affiliation">
+                <label for="inputInstituationAffiliation4">Institution Affiliation</label>
+                <input type="password" class="form-control" id="inputInstituationAffiliation4" placeholder="Institution Affiliation">
             </div>
           </div>
 
-
           <div class="form-row">
-
             <div class="form-group col-md-6">
               <label for="inputState">Type of Data</label>
-              <select id="inputState" class="form-control" [formControl]="typeofdata">
+              <select id="inputState" class="form-control" required>
                 <option selected>Select Type of Data</option>
                 <option>Refectance</option>
                 <option>Transmittance</option>
                 <option>Irradiance</option>
               </select>
-              {{this.typeofdata.value}}
             </div>
 
             <div class="form-group col-md-6">
               <label for="inputState">Source Data</label>
-              <select id="inputState" class="form-control">
+              <select id="inputState" class="form-control" required>
                 <option selected>Select Source of Data</option>
                 <option>Field</option>
                 <option>Museum</option>
               </select>
             </div>
-
           </div>
 
           <div class="form-row">
             <div class="form-group col-md-6">
-              <p>Have the Data been Published?</p>
-              <div class="wrapper-class">
-                <input type="radio" name="isPublished">
-                <label for="yes">Yes</label>
-                <input type="radio" name="isPublished">
-                <label for="no">No</label>
-              </div>
+                <p>Have the Data been Published?</p>
+                <div class="wrapper-class">
+                    <input class="mr-1" type="radio" name="isPublished" (change)="hideDivWhenRadioButtonChanged()">
+                    <label for="yes" class="mr-2">Yes</label>
+                    <input class="mr-1" type="radio" name="isPublished" (change)="hideDivWhenRadioButtonChanged()">
+                    <label for="no">No</label>
+                </div>
+            </div>
+          </div>
+
+          <div class="form-row" [hidden]="!this.hasChangedForDataPublish">
+            <div class="form-group col-md-6">
+                <label for="inputReferenceNumber4">Reference Number</label>
+                <input type="referencenumber" class="form-control" id="inputReferenceNumber4" placeholder="Reference Number">
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="inputdoi4">Digital Object Identifier</label>
+                <input type="digitalobjectidentifier" class="form-control" id="inputdoi4" placeholder="Digital Object Identifier">
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group col-md-6">
               <p>Embargo?</p>
-              <div class="wrapper-class">
-                <input type="radio" name="isEmbargo">
-                <label for="yes">Yes</label>
-                <input type="radio" name="isEmbargo">
-                <label for="no">No</label>
+              <div class="wrapper-class ml-1">
+                  <input class="mr-1" type="radio" name="isEmbargo" (change)="hideDivWhenEmbargoSelected()">
+                  <label class="mr-2" for="yes">Yes</label>
+                  <input class="mr-1" type="radio" name="isEmbargo" (change)="hideDivWhenEmbargoSelected()">
+                  <label for="no">No</label>
               </div>
             </div>
 
-            <div class="form-group col-md-6">
-              <label for="date">Date</label>
-              <input type="date" class="form-control" id="date" placeholder="Date">
+            <div class="form-group col-md-6" [hidden]="!this.hasChangedForEmbargo">
+                <label for="date">Date</label>
+                <input type="date" class="form-control" id="date" placeholder="Date" required>
             </div>
           </div>
         </form>
       </div>
-      <div class="modal-footer">
 
-          <button type="button" class="btn bg-transparent" (click)="saveSubmissionInformation()" >Test Submit</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal2">Next</button>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal2">Next</button>
       </div>
     </div>
   </div>
