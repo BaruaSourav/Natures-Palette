@@ -30,7 +30,7 @@ let SubmissionSchema = new Schema({
     releasDate :{
         type: Date
     },
-    doi :{
+    Doi :{
         type: String
     }
 
