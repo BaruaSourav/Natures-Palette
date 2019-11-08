@@ -30,6 +30,8 @@ export class UploadComponent implements OnInit {
   metadataurl = new FormControl('');
   rawfileurl = new FormControl('');
 
+ 
+
 
 
   constructor(private service: SubmissionService) {
@@ -72,7 +74,7 @@ export class UploadComponent implements OnInit {
   hideDivWhenRadioButtonChanged() {
     if (this.hasChangedForDataPublish) {
       this.hasChangedForDataPublish = false;
-    } else {
+    } else if(!this.hasChangedForDataPublish) {
       this.hasChangedForDataPublish = true;
     }
   }
