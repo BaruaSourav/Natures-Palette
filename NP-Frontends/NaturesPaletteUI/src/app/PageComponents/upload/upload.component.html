@@ -71,92 +71,86 @@
         <form>
           <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="inputFirstName4">First Name</label>
-                <input [formControl]="firstname" type="firstname" class="form-control" id="inputFirstName4" placeholder="First Name" required>
-            </div>{{this.firstname.value}}
-            
+                <input [formControl]="firstname" type="firstname" class="form-control" id="FirstName" placeholder="First Name" required>
+            </div>
+
 
             <div class="form-group col-md-6">
-                <label for="inputLastName4">Last Name</label>
-                <input [formControl]="lastname" type="lastname" class="form-control" id="inputLastName4" placeholder="Last Name" required>
-            </div>{{this.lastname.value}}
+                <input [formControl]="lastname" type="lastname" class="form-control" id="LastName" placeholder="Last Name" required>
+            </div>
 
             <div class="form-group col-md-6">
-                <label for="inputEmail4">Email</label>
-                <input [formControl]="email" type="email" class="form-control" id="inputEmail4" placeholder="Email" required>
-            </div>{{this.email.value}}
+                <input [formControl]="email" type="email" class="form-control" id="Email" placeholder="Email" required>
+            </div>
 
             <div class="form-group col-md-6">
-                <label for="inputInstituationAffiliation4">Institution Affiliation</label>
                 <input [formControl]="instituationaffiliation" type="inputinstituation" class="form-control" id="inputInstituationAffiliation4" placeholder="Institution Affiliation">
-            </div>{{this.instituationaffiliation.value}}
+            </div>
           </div>
 
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputState">Type of Data</label>
-              <select [formControl]="typeofdata" id="inputState" class="form-control" required>
-                <option selected>Select Type of Data</option>
-                <option>Refectance</option>
+              <select [formControl]="typeofdata" id="typeofdata" class="form-control" required>
+                <option>Reflectance</option>
                 <option>Transmittance</option>
                 <option>Irradiance</option>
               </select>
-            </div>{{this.typeofdata.value}}
+            </div>
 
             <div class="form-group col-md-6">
-              <label for="inputState">Source Data</label>
+              <label for="inputState">Select Source of Data</label>
               <select [formControl]="sourceofdata" id="inputState" class="form-control" required>
-                <option selected>Select Source of Data</option>
                 <option>Field</option>
                 <option>Museum</option>
               </select>
-            </div>{{this.sourceofdata.value}}
+            </div>
           </div>
 
           <div class="form-row">
             <div class="form-group col-md-6">
                 <p>Have the Data been Published?</p>
                 <div class="wrapper-class">
-                    <input class="mr-1" type="radio" name="isPublished" (change)="hideDivWhenRadioButtonChanged()">
+                    <input class="mr-1" type="radio" name="isPublished" value="yes" (change)="isPublishChanged($event)">
                     <label for="yes" class="mr-2">Yes</label>
-                    <input class="mr-1" type="radio" name="isPublished" (change)="hideDivWhenRadioButtonChanged()">
+                    <input class="mr-1" type="radio" name="isPublished" value="no" (change)="isPublishChanged($event)">
                     <label for="no">No</label>
                 </div>
             </div>
           </div>
 
-          <div class="form-row" [hidden]="!this.hasChangedForDataPublish">
+          <div class="form-row" [hidden]="!this.isPublished">
             <div class="form-group col-md-6">
-                <label for="inputReferenceNumber4">Reference Number</label>
                 <input [formControl]="referencenumber" type="referencenumber" class="form-control" id="inputReferenceNumber4" placeholder="Reference Number">
-            </div>{{this.referencenumber.value}}
+            </div>
 
             <div class="form-group col-md-6">
-                <label for="inputdoi4">Digital Object Identifier</label>
-                <input [formControl]="doi" type="digitalobjectidentifier" class="form-control" id="inputdoi4" placeholder="Digital Object Identifier">
-            </div>{{this.doi.value}}
+                <input [formControl]="doi" type="digitalobjectidentifier" class="form-control" id="inputdoi4" placeholder="Digital Object Identifier(DOI)">
+            </div>
           </div>
 
           <div class="form-row">
             <div class="form-group col-md-6">
               <p>Embargo?</p>
               <div class="wrapper-class ml-1">
-                  <input formControlName="embargo" class="mr-1" type="radio" name="isEmbargo" (change)="hideDivWhenEmbargoSelected()">
+                  <input  class="mr-1" type="radio" name="isEmbargo" value="yes" (change)="isEmbargoChanged($event)">
                   <label class="mr-2" for="yes">Yes</label>
-                  <input formControlName="embargo" class="mr-1" type="radio" name="isEmbargo" (change)="hideDivWhenEmbargoSelected()">
+                  <input  class="mr-1" type="radio" name="isEmbargo" value = "no" (change)="isEmbargoChanged($event)">
                   <label for="no">No</label>
-              </div>{{this.embargo.value}}
+              </div>
             </div>
 
-            <div class="form-group col-md-6" [hidden]="!this.hasChangedForEmbargo">
+            <div class="form-group col-md-6" [hidden]="!this.isEmbargo">
                 <label for="date">Date</label>
                 <input [formControl]="embargodate" type="date" class="form-control" id="date" placeholder="Date" required>
-            </div>{{this.date.value}}
+            </div>
           </div>
         </form>
       </div>
 
       <div class="modal-footer">
+
+          <button type="button" class="btn bg-warning" (click)="saveSubmissionInformation()">Test Submit</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal2">Next</button>
       </div>
@@ -165,7 +159,7 @@
 </div>
 
 <!--Second step Modal-->
-<div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle"
+<div class="modal fade" id="modal2" style="min-height: 80vh !important;" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable" role="document">
     <div class="modal-content">

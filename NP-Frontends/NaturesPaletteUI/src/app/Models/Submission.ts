@@ -7,7 +7,7 @@ export class Submission {
   DataSource: string;
   IsPublished: boolean;
   IsEmbargo: boolean;
-  SubmissionDate: Date;
+  EmbargoDate: Date;
   MetadataFileUrl: string;
   RawFileUrl: string;
   Doi: string;

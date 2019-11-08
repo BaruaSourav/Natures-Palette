@@ -12,7 +12,7 @@ let SubmissionSchema = new Schema({
     metadataCollectionId: {
         type: Number
     },
-    typeOfData: {
+    TypeOfData: {
         type: String
     },
     dataFrom: {
@@ -27,10 +27,16 @@ let SubmissionSchema = new Schema({
     isEmbargo :{
         type: Boolean
     },
-    releasDate :{
+    EmbargoDate :{
         type: Date
     },
-    doi :{
+    Doi :{
+        type: String
+    },
+    Name :{
+        type: String
+    },
+    Email :{
         type: String
     }
 

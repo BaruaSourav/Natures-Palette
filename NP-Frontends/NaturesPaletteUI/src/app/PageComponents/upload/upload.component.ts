@@ -13,17 +13,17 @@ export class UploadComponent implements OnInit {
 
   private submissionInfo: Submission;
   public hasAgreed: boolean;
-  public hasChangedForDataPublish: boolean;
-  public hasChangedForEmbargo: boolean;
+  public isPublished: boolean;
+  public isEmbargo: boolean;
 
   firstname = new FormControl('');
   lastname = new FormControl('');
   typeofdata = new FormControl('');
   email = new FormControl('');
   instituationaffiliation = new FormControl('');
-  sourceofdata = new FormControl ('');
-  databeenpublished = new FormControl ('');
-  embargo = new FormControl ('');
+  sourceofdata = new FormControl('');
+  databeenpublished = new FormControl('');
+  embargo = new FormControl('');
   embargodate = new FormControl('');
   doi = new FormControl('');
   referencenumber = new FormControl('');
@@ -37,8 +37,8 @@ export class UploadComponent implements OnInit {
   constructor(private service: SubmissionService) {
     this.hasAgreed = false;
     this.submissionInfo = new Submission();
-    this.hasChangedForDataPublish = false;
-    this.hasChangedForEmbargo = false;
+    this.isPublished = false;
+    this.isEmbargo = false;
   }
 
   ngOnInit() {
@@ -51,26 +51,42 @@ export class UploadComponent implements OnInit {
       this.hasAgreed = true;
     }
   }
+  isPublishChanged(e) {
+    // console.log(e.target.value =='yes');
+    if (e.target.value === 'yes') {
+      this.isPublished = true;
+    } else if (e.target.value === 'no') {
+      this.isPublished = false;
+    }
+  }
+
+  isEmbargoChanged(e) {
+    if (e.target.value === 'yes') {
+      this.isEmbargo = true;
+    } else if (e.target.value === 'no') {
+      this.isEmbargo = false;
+    }
+  }
 
   saveSubmissionInformation() {
-    //Constructing the submissioninfo instance
+    // Constructing the submissioninfo instance
     this.submissionInfo.TypeOfData = this.typeofdata.value;
     this.submissionInfo.DataSource = this.sourceofdata.value;
-    this.submissionInfo.Name = this.firstname.value;
-    this.submissionInfo.Name = this.lastname.value;
+    this.submissionInfo.Name = this.firstname.value + this.lastname.value;
     this.submissionInfo.Email = this.email.value;
     this.submissionInfo.InstAffiliation = this.instituationaffiliation.value;
     this.submissionInfo.Doi = this.doi.value;
     this.submissionInfo.ReferenceNumber = this.referencenumber.value;
     this.submissionInfo.MetadataFileUrl = this.metadataurl.value;
     this.submissionInfo.RawFileUrl = this.rawfileurl.value;
-    
+    this.submissionInfo.IsEmbargo = this.isEmbargo;
+    this.submissionInfo.IsPublished = this.isPublished;
     console.log(this.submissionInfo);
-    //TODO: Vivek
 
-    //passing submissioninfo to service
+    // passing submissioninfo to service
     this.service.addSubmission(this.submissionInfo);
   }
+<<<<<<< HEAD
   hideDivWhenRadioButtonChanged() {
     if (this.hasChangedForDataPublish) {
       this.hasChangedForDataPublish = false;
@@ -78,13 +94,8 @@ export class UploadComponent implements OnInit {
       this.hasChangedForDataPublish = true;
     }
   }
+=======
+>>>>>>> f37569015b3c0fbea34264a71b4caa7bdee29b09
 
-  hideDivWhenEmbargoSelected() {
-    if (this.hasChangedForEmbargo) {
-      this.hasChangedForEmbargo = false;
-    } else {
-      this.hasChangedForEmbargo = true;
-    }
-  }
 
 }
