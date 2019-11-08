@@ -29,6 +29,11 @@ export class UploadComponent implements OnInit {
   embargodate = new FormControl('');
   doi = new FormControl('');
   referencenumber = new FormControl('');
+  metadataurl = new FormControl('');
+  rawfileurl = new FormControl('');
+
+
+
 
 
   constructor(private service: SubmissionService) {
@@ -37,7 +42,7 @@ export class UploadComponent implements OnInit {
     this.isPublished = false;
     this.isEmbargo = false;
 
-    //initial values
+    // initial values
     this.rawFileName = 'Choose Files';
     this.metadatafilename = 'Choose Files';
   }
