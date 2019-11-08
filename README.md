@@ -24,12 +24,12 @@ Developed for course COMP - 6905 MUN.
 - Created Home & Upload Component.
 - Implemented persistance of submission information.
 
-- User interface
--     Front Page
--     Upload Page
--     Submission Form
-- Upload Function
--     Enter contributor Information
--     Select Meta data
--     Select Raw data
--     Upload data files
+## User interface ##
+- Front Page
+- Upload Page
+- Submission Form
+## Upload Function ##
+- Enter contributor Information
+- Select Meta data
+- Select Raw data
+- Upload data files
