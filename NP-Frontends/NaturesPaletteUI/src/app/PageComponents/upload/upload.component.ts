@@ -18,6 +18,9 @@ export class UploadComponent implements OnInit {
   public metadatafilename: string;
   public rawFileName: string;
 
+  public metadataFile: File = null;
+  public rawDataFile: File = null;
+
   firstname = new FormControl('');
   lastname = new FormControl('');
   typeofdata = new FormControl('');
@@ -94,15 +97,17 @@ export class UploadComponent implements OnInit {
   }
 
   metadataFileChanged(e) {
-    const file = e.target.files[0];
+    this.metadataFile = e.target.files[0];
     // console.log(file);
-    this.metadatafilename = file.name;
+    this.metadatafilename = this.metadataFile.name;
   }
   rawFileChanged(e) {
-    const file = e.target.files[0];
+    this.rawDataFile = e.target.files[0];
     // console.log(file);
-    this.rawFileName = file.name;
+    this.rawFileName = this.rawDataFile.name;
   }
-
+  validate() {
+      this.service.validateFiles(this.metadataFile, this.rawDataFile);
+  }
 
 }

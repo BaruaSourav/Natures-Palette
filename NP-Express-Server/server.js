@@ -3,7 +3,7 @@ path = require('path');
 bodyParser = require('body-parser');
 cors = require('cors');
 mongoose = require('mongoose');
-var multer  =   require('multer');
+var multer = require('multer');
 
 config = require('./DBConfiguration');
 
@@ -24,9 +24,17 @@ const app = express();
 //app.use(connect.bodyParser());
 app.use(bodyParser.json());
 app.use(cors());
+//create a cors middleware
+app.use(function (req, res, next) {
+    //set headers to allow cross origin request.
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 // routes
-app.use('/submissions',submissionroute);
-app.use('/metadata',metadataroute);
+app.use('/submissions', submissionroute);
+app.use('/metadata', metadataroute);
 let port = process.env.PORT || 4000;
 
 

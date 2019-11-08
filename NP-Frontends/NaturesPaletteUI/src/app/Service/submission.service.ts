@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Submission } from './../Models/Submission';
 import { NaturesPaletteConfig } from './../NaturesPaletteConfig';
 
@@ -20,9 +20,21 @@ export class SubmissionService {
     console.log(submission);
 
     this.http.post(`${this.uri}/submissions/add`, submission)
-        .subscribe((res) => {
-          console.log(res);
-        }
-        );
+      .subscribe((res) => {
+        console.log(res);
+      }
+      );
+  }
+  validateFiles(metadatafile: File, rawdatafile: File) {
+    console.log(metadatafile);
+    const metadataform: any = new FormData();
+    metadataform.append('metadatafile', metadatafile, metadatafile.name);
+    // posting metadata file for validation
+
+    this.http.post(`${this.uri}/metadata/validate`, metadataform)
+      .subscribe((res) => {
+        console.log(res);
+      }
+      );
   }
 }

@@ -37,7 +37,7 @@ var validationdirectorymiddleware = multer({ storage : validationstorage}).singl
 var metadatafiledirectorymiddleware = multer({ storage : metadatafilestorage}).single('metadatafile');
 // Defining validation route for metadata file
 metadataroutes.route('/validate').post(function(req,res){
-  console.log(util.inspect(req.file, false, null, true /* enable colors */))
+  console.log(util.inspect(req.file, false, null, true))
   // 
   validationdirectorymiddleware(req,res,function(err) {
 
@@ -45,8 +45,8 @@ metadataroutes.route('/validate').post(function(req,res){
           console.log(err);
           return res.end(err);
       }
-      console.log("NP MetadataRoute Message: File is uploaded to /filepersistance/metadatafile folder")
-      res.end("NP MetadataRoute Message: File is uploaded to /filepersistance/metadatafile folder");
+      console.log("NP MetadataRoute Message: File is uploaded to /filepersistance/tempvalidationfile folder")
+      res.end("NP MetadataRoute Message: File is uploaded to /filepersistance/tempvalidationfile folder");
   });
 });
 
