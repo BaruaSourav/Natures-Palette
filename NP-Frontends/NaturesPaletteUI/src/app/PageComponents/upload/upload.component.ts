@@ -86,16 +86,4 @@ export class UploadComponent implements OnInit {
     // passing submissioninfo to service
     this.service.addSubmission(this.submissionInfo);
   }
-<<<<<<< HEAD
-  hideDivWhenRadioButtonChanged() {
-    if (this.hasChangedForDataPublish) {
-      this.hasChangedForDataPublish = false;
-    } else if(!this.hasChangedForDataPublish) {
-      this.hasChangedForDataPublish = true;
-    }
-  }
-=======
->>>>>>> f37569015b3c0fbea34264a71b4caa7bdee29b09
-
-
 }
