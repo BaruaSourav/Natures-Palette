@@ -1,4 +1,5 @@
 // metadatafile.route.js
+const util = require('util')
 const express = require('express');
 const app = express();
 const metadataroutes = express.Router();
@@ -9,13 +10,51 @@ var multer = require('multer');
 // MetadataFileModel 
 let MetadataFileModel = require('../Models/MetadataFileModel');
 
-var upload = multer({ storage : storage}).single('file');
+// configuring multer middleware
+// metadata storage directory
+var metadatafilestorage =   multer.diskStorage({
+  destination: function (req, file, callback) {
+    callback(null, './filepersistance/metadatafiles');
+  },
+  filename: function (req, file, callback) {
+    //console.log(file);
+    callback(null, file.originalname);
+  }
+});
+//validation storage directory
+var validationstorage =   multer.diskStorage({
+  destination: function (req, file, callback) {
+    callback(null, './filepersistance/tempvalidationfiles');
+  },
+  filename: function (req, file, callback) {
+    //console.log(file);
+    callback(null, file.originalname);
+  }
+});
+
+
+var validationdirectorymiddleware = multer({ storage : validationstorage}).single('metadatafile');
+var metadatafiledirectorymiddleware = multer({ storage : metadatafilestorage}).single('metadatafile');
 // Defining validation route for metadata file
+metadataroutes.route('/validate').post(function(req,res){
+  console.log(util.inspect(req.file, false, null, true /* enable colors */))
+  // 
+  validationdirectorymiddleware(req,res,function(err) {
+
+      if(err) {
+          console.log(err);
+          return res.end(err);
+      }
+      console.log("NP MetadataRoute Message: File is uploaded to /filepersistance/metadatafile folder")
+      res.end("NP MetadataRoute Message: File is uploaded to /filepersistance/metadatafile folder");
+  });
+});
+
 
 
 
 // Defined store route for metadatafile
-metadataroutes.route('/add').post(upload.none(), function (req, res) {
+metadataroutes.route('/add').post(function (req, res) {
   let submission = new SubmissionModel(req.body);
   submission.save()
     .then(submission => {
@@ -33,12 +72,12 @@ metadataroutes.route('/add').post(upload.none(), function (req, res) {
 
 // Defined get data(index or listing) route
 metadataroutes.route('/').get(function (req, res) {
-  MetadataFileModel.find(function (err, submissions) {
+  MetadataFileModel.find(function (err, metadatainformationlist) {
     if (err) {
       console.log(err);
     }
     else {
-      res.json(submissions);
+      res.json(metadatainformationlist);
     }
   });
 });
@@ -79,4 +118,4 @@ metadataroutes.route('/').get(function (req, res) {
 //     });
 // });
 
-module.exports = submissionroutes;
+module.exports = metadataroutes;

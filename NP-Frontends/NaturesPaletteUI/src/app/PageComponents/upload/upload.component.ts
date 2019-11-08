@@ -15,6 +15,8 @@ export class UploadComponent implements OnInit {
   public hasAgreed: boolean;
   public isPublished: boolean;
   public isEmbargo: boolean;
+  public metadatafilename: string;
+  public rawFileName: string;
 
   firstname = new FormControl('');
   lastname = new FormControl('');
@@ -27,9 +29,6 @@ export class UploadComponent implements OnInit {
   embargodate = new FormControl('');
   doi = new FormControl('');
   referencenumber = new FormControl('');
-  metadataurl = new FormControl('');
-  rawfileurl = new FormControl('');
-
 
 
   constructor(private service: SubmissionService) {
@@ -37,6 +36,10 @@ export class UploadComponent implements OnInit {
     this.submissionInfo = new Submission();
     this.isPublished = false;
     this.isEmbargo = false;
+
+    //initial values
+    this.rawFileName = 'Choose Files';
+    this.metadatafilename = 'Choose Files';
   }
 
   ngOnInit() {
@@ -75,14 +78,25 @@ export class UploadComponent implements OnInit {
     this.submissionInfo.InstAffiliation = this.instituationaffiliation.value;
     this.submissionInfo.Doi = this.doi.value;
     this.submissionInfo.ReferenceNumber = this.referencenumber.value;
-    this.submissionInfo.MetadataFileUrl = this.metadataurl.value;
-    this.submissionInfo.RawFileUrl = this.rawfileurl.value;
+    this.submissionInfo.MetadataFileUrl = this.metadatafilename;
+    this.submissionInfo.RawFileUrl = this.rawFileName;
     this.submissionInfo.IsEmbargo = this.isEmbargo;
     this.submissionInfo.IsPublished = this.isPublished;
     console.log(this.submissionInfo);
 
     // passing submissioninfo to service
     this.service.addSubmission(this.submissionInfo);
+  }
+
+  metadataFileChanged(e) {
+    const file = e.target.files[0];
+    // console.log(file);
+    this.metadatafilename = file.name;
+  }
+  rawFileChanged(e) {
+    const file = e.target.files[0];
+    // console.log(file);
+    this.rawFileName = file.name;
   }
 
 

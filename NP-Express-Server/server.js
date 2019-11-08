@@ -26,7 +26,7 @@ app.use(bodyParser.json());
 app.use(cors());
 // routes
 app.use('/submissions',submissionroute);
-app.use('/metadata',metadataoute);
+app.use('/metadata',metadataroute);
 let port = process.env.PORT || 4000;
 
 

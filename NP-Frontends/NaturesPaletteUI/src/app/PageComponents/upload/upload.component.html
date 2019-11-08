@@ -169,38 +169,42 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" style="min-height: 65vh;">
         <form>
           <div class="form-row">
-            <div class="col-md-8">
+            <div class="col-md-12">
               <p class="text-info">Select your Metadata file</p>
               <form id="uploadForm">
                 <div class="input-group mb-4">
                   <div class="custom-file">
-                    <label class="custom-file-label" for="selectedfile">Choose file</label>
-                    <input [formControl]="metadataurl" type="file" class="" id="selectedfile" aria-describedby="selectedfile">
+                    <label class="custom-file-label" for="metadatafile">{{this.metadatafilename}}</label>
+                    <input  (change)="metadataFileChanged($event)" type="file" class="form-control" id="metadatafile" aria-describedby="metadatafile">
+
                   </div>
                 </div>
               </form>
             </div>
 
-            <div class="col-md-8">
+            <div class="col-md-12">
               <p class="text-info">Select your Rawdata file</p>
               <form id="uploadForm">
                 <div class="input-group mb-4">
                   <div class="custom-file">
-                    <label class="custom-file-label" for="selectedfile">Choose file</label>
-                    <input [formControl]="rawfileurl" type="file" class="" id="selectedfile" aria-describedby="selectedfile">
+                    <label class="custom-file-label" for="rawdatafile">{{this.rawFileName}}</label>
+                    <input (change)="rawFileChanged($event)" type="file" class="" id="rawdatafile" aria-describedby="selectedfile">
                   </div>
                 </div>
               </form>
-            </div>{{this.rawfileurl.value}}
+              <button class="btn btn-secondary text-white" (click)=validate() >
+                  Validate Files
+              </button>
+            </div>
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-primary">Confirm File submission</button>
       </div>
     </div>
   </div>
