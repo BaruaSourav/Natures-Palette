@@ -2,7 +2,18 @@
 Developed for course COMP - 6905 MUN. 
 # *Iteration 1*  (30 October 2019 - 8th November 2019)
 - Setting up the environment and overall application file structure.
-- Implement upload use case.
+- Implement upload use case with required GUI
+- Work Done:
+- User interface
+-     Front Page
+-     Upload Page
+-     Submission Form
+- Upload Function
+-     Enter contributor Information
+-     Select Meta data
+-     Select Raw data
+-     Upload data files
+
 # Test link 
 
 - [File Uploading Module](http://sc-5.cs.mun.ca)
