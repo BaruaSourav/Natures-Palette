@@ -1,0 +1,133 @@
+<div class="container"> 
+  <form>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="search-button">
+          <div class="input-group-append">
+            <button class="btn btn-primary go-button" type="button" id="search-button">Go!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <input type="institutionCode" class="form-control" id="institutionCode" placeholder="Institution Code">
+        </div>
+      </div>
+      <div class="col-md-4">
+          <div class="form-group">
+            <input type="collectionCode" class="form-control" id="collectionCode" placeholder="CollectionCode">
+          </div>
+      </div>
+      <div class="col-md-4">
+          <div class="form-group">
+            <input type="catalogueNumber" class="form-control" id="catalogueNumber" placeholder="Catalogue Number">
+          </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <input type="class" class="form-control" id="class" placeholder="Class">
+        </div>
+      </div>
+      <div class="col-md-4">
+          <div class="form-group">
+            <input type="order" class="form-control" id="order" placeholder="Order">
+          </div>
+      </div>
+      <div class="col-md-4">
+          <div class="form-group">
+            <input type="family" class="form-control" id="family" placeholder="Family">
+          </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <input type="genus" class="form-control" id="genus" placeholder="Genus">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <input type="specificEpithet" class="form-control" id="specificEpithet" placeholder="Specific Epithet">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <input type="infraspecificEpithet" class="form-control" id="infraspecificEpithet" placeholder="Infraspecific Epithet">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <input type="sex" class="form-control" id="sex" placeholder="Sex">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <input type="lifeStage" class="form-control" id="lifeStage" placeholder="Life Stage">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <input type="country" class="form-control" id="country" placeholder="Country">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <input type="patch" class="form-control" id="patch" placeholder="Patch">
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="row">
+    <div class="col-md-12">
+      <p>Refine Search By</p>
+      <div class="row">
+        <div class="col-md-12">
+          <button type="button" class="btn btn-outline-success geo-button">Georeferencing</button>
+          <button type="button" class="btn btn-outline-success">Color Space</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">genus</th>
+        <th scope="col">specificEpithet</th>
+        <th scope="col">infraspecificEpithet</th>
+        <th scope="col">sex</th>
+        <th scope="col">lifeStage</th>
+        <th scope="col">patch</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+    </tbody>
+  </table>
+
+  <div class="row">
+    <div class="col-md-10"></div>
+  
+    <div class="col-md-2">
+      <button type="button" id="downloadButton" class="btn btn-primary download-button">Download All</button>
+    </div>
+  </div>
+
+</div>

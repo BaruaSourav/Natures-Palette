@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -9,6 +9,7 @@ import { HomeComponent } from './PageComponents/home/home.component';
 import { NavMenuComponent} from './SharedComponents/nav-menu/nav-menu.component';
 import { UploadComponent } from './PageComponents/upload/upload.component';
 import { FooterComponent } from './SharedComponents/footer/footer.component';
+import { SearchComponent } from './PageComponents/search/search.component';
 
 import { RouterModule, Routes } from '@angular/router';
 
@@ -16,9 +17,11 @@ import { RouterModule, Routes } from '@angular/router';
 import {SubmissionService} from './Service/submission.service';
 
 
+
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'upload', component: UploadComponent },
+  { path: 'search', component: SearchComponent},
   // { path: 'hero/:id', component: HeroDetailComponent },
   // {
   //   path: 'heroes',
@@ -39,7 +42,8 @@ const appRoutes: Routes = [
     HomeComponent,
     NavMenuComponent,
     UploadComponent,
-    FooterComponent
+    FooterComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
