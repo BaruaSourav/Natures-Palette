@@ -150,7 +150,7 @@
 
       <div class="modal-footer">
 
-          <button type="button" class="btn bg-warning" (click)="saveSubmissionInformation()">Test Submit</button>
+          <!-- <button type="button" class="btn bg-warning" (click)="saveSubmissionInformation()">Test Submit</button> -->
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadFilesModal">Next</button>
       </div>
@@ -201,10 +201,13 @@
             </div>
           </div>
         </form>
+        <div class="alert alert-success" role="alert" *ngIf="this.isValidated">
+          Metadata File and Raw File validated
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Confirm File submission</button>
+        <button type="button" class="btn btn-primary" [disabled]="!this.isValidated" data-dismiss="modal">Confirm File submission</button>
       </div>
     </div>
   </div>
