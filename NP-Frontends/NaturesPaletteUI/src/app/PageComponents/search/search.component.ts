@@ -11,9 +11,9 @@ import { FormBuilder, FormControl } from '@angular/forms'
 })
 export class SearchComponent implements OnInit {
   private searchInfo: Search;
- 
-  
-  serchtext = new FormControl('');
+
+
+  searchtext = new FormControl('');
   institutioncode = new FormControl('');
   collectioncode = new FormControl('');
   cataloguenumber = new FormControl('');
@@ -37,7 +37,7 @@ export class SearchComponent implements OnInit {
 
   SearchInformation() {
     // Constructing the searchinfo instance
-    this.searchInfo.SearchText = this.serchtext.value;
+    this.searchInfo.SearchText = this.searchtext.value;
     this.searchInfo.InstitutionCode = this.institutioncode.value;
     this.searchInfo.CollectionCode = this.collectioncode.value;
     this.searchInfo.CatalogueNumber = this.cataloguenumber.value;
