@@ -43,8 +43,13 @@ export class SubmissionService {
     this.http.post(`${this.uri}/rawfile/validate`, rawfileform)
       .subscribe((res) => {
       console.log(res);
-    }
-      );
+    });
+    const validationform: any = new FormData();
+    validationform.append("rawfilename",rawfile.name);
 
+    this.http.post(`${this.uri}/validation/primaryvalidation`)
+    .subscribe((res) => {
+      console.log((res));
+    });
   }
 }
