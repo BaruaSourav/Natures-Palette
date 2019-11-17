@@ -7,8 +7,10 @@ var multer = require('multer');
 
 config = require('./DBConfiguration');
 
-const submissionroute = require('./routes/submission.route');
-const metadataroute = require('./routes/metadatafile.route')
+const submissionroute = require('./Routes/submission.route');
+const metadataroute = require('./Routes/metadatafile.route');
+const rawfileroute = require ('./Routes/rawfile.route');
+const validationroute = require('./Routes/validation.route')
 
 //mongodb connection promise
 mongoose.Promise = global.Promise;
@@ -35,6 +37,8 @@ app.use(function (req, res, next) {
 // routes
 app.use('/submissions', submissionroute);
 app.use('/metadata', metadataroute);
+app.use('/rawfile',rawfileroute);
+app.use('/validation',validationroute);
 let port = process.env.PORT || 4000;
 
 

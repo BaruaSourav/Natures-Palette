@@ -17,6 +17,9 @@ export class UploadComponent implements OnInit {
   public isEmbargo: boolean;
   public metadatafilename: string;
   public rawFileName: string;
+  public isValidated: boolean;
+
+  public isUploaded: boolean;
 
   public metadataFile: File = null;
   public rawDataFile: File = null;
@@ -44,6 +47,8 @@ export class UploadComponent implements OnInit {
     this.submissionInfo = new Submission();
     this.isPublished = false;
     this.isEmbargo = false;
+    this.isValidated = false;
+    this.isUploaded = false;
 
     // initial values
     this.rawFileName = 'Choose Files';
@@ -108,6 +113,7 @@ export class UploadComponent implements OnInit {
   }
   validate() {
       this.service.validateFiles(this.metadataFile, this.rawDataFile);
+      this.isValidated = true;
   }
 
 }

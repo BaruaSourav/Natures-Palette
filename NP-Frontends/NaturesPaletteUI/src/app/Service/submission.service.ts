@@ -25,10 +25,13 @@ export class SubmissionService {
       }
       );
   }
-  validateFiles(metadatafile: File, rawdatafile: File) {
-    console.log(metadatafile);
+  validateFiles(metadatafile: File, rawfile: File) {
+    // console.log(metadatafile);
+    let fileConsistencyValidated = false;
     const metadataform: any = new FormData();
     metadataform.append('metadatafile', metadatafile, metadatafile.name);
+    const rawfileform: any= new FormData();
+    rawfileform.append('rawfile',rawfile, rawfile.name);
     // posting metadata file for validation
 
     this.http.post(`${this.uri}/metadata/validate`, metadataform)
@@ -36,5 +39,18 @@ export class SubmissionService {
         console.log(res);
       }
       );
+      console.log(rawfile);
+    this.http.post(`${this.uri}/rawfile/validate`, rawfileform)
+      .subscribe((res) => {
+      console.log(res);
+    });
+    const validationform: any = new FormData();
+    validationform.append("rawfilename",rawfile.name);
+    validationform.append("metadatafilename",metadatafile.name);
+
+    this.http.post(`${this.uri}/validation/primaryvalidation`,validationform)
+    .subscribe((res) => {
+      console.log((res));
+    });
   }
 }
