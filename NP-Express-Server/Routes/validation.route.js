@@ -8,6 +8,13 @@ const fs = require("fs");
 const path = require("path");
 
 var multer = require("multer");
+// Validation templates 
+// Field Template 
+var fieldTemplateHeaders = [
+  'FileName',
+  'institutionCode',
+  'collectionCode'
+]
 
 upload = multer();
 // Defining validation route for metadata file
@@ -15,10 +22,15 @@ validationroutes
   .route("/primaryvalidation")
   .post(upload.none(), function(req, res) {
     //console.log(util.inspect(req.file, false, null, true));
-    fs.createReadStream(path.resolve(__dirname, "../filepersistance/tempvalidationfiles/"+req.body.metadatafilename))
-      .pipe(csv()).
-      on("header", row =>{
-        console.log(row);
+    fs.createReadStream(
+      path.resolve(
+        __dirname,
+        "../filepersistance/tempvalidationfiles/" + req.body.metadatafilename
+      )
+    )
+      .pipe(csv())
+      .on("headers", headers => {
+        console.log(`all headers: ${headers}`);
       })
       .on("data", row => {
         //console.log(row);
