@@ -46,8 +46,9 @@ export class SubmissionService {
     });
     const validationform: any = new FormData();
     validationform.append("rawfilename",rawfile.name);
+    validationform.append("metadatafilename",metadatafile.name);
 
-    this.http.post(`${this.uri}/validation/primaryvalidation`)
+    this.http.post(`${this.uri}/validation/primaryvalidation`,validationform)
     .subscribe((res) => {
       console.log((res));
     });

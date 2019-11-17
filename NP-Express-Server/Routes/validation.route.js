@@ -8,7 +8,7 @@ var multer = require('multer');
 
 upload =  multer();
 // Defining validation route for metadata file
-rawfileroutes.route('/primaryvalidation').post(upload.none(), function(req,res){
+validationroutes.route('/primaryvalidation').post(upload.none(), function(req,res){
   console.log(util.inspect(req.file, false, null, true))
 
       if(err) {
@@ -23,15 +23,10 @@ rawfileroutes.route('/primaryvalidation').post(upload.none(), function(req,res){
 
 // Defined get data(index or listing) route
 validationroutes.route('/').get(function (req, res) {
-  MetadataFileModel.find(function (err, metadatainformationlist) {
-    if (err) {
-      console.log(err);
-    }
-    else {
-      res.json("validation routeworks perfectly")
-    }
+    res.json("validation route works perfectly")
+    
   });
-});
+
 
 
 
