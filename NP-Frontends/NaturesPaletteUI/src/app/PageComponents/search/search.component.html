@@ -118,6 +118,15 @@
       </tr>
     </thead>
     <tbody>
+      <tr *ngFor="let result of searchResult; index as i"> <!-- adding of to retrive data -->
+        <td>{{ result.genus }}</td>
+        <td>{{ result.specificEpithet }}</td>
+        <td>{{ result.infraspecificEpithet }}</td>
+        <td>{{ result.sex }}</td>
+        <td>{{ result.lifeStage }}</td>
+        <td>{{ result.patch }}</td>
+      </tr>
+      
 
     </tbody>
   </table>

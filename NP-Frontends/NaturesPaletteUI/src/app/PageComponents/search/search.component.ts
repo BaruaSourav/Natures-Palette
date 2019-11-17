@@ -11,7 +11,8 @@ import { FormBuilder, FormControl } from '@angular/forms'
 })
 export class SearchComponent implements OnInit {
   private searchInfo: Search;
-  private searchResult: Any;
+  public searchResult: any;
+
 
   searchtext = new FormControl('');
   institutioncode = new FormControl('');
@@ -33,6 +34,7 @@ export class SearchComponent implements OnInit {
    }
 
   ngOnInit() {
+    
   }
 
   SearchInformation() {
@@ -55,12 +57,25 @@ export class SearchComponent implements OnInit {
 
     // passing submissioninfo to service
     // searchresult = this.service.search(this.searchInfo);
-     testSearchResult = [
+      const testSearchResult = [
        {
-       '':'test'
+       'genus':'test',
+       'specificEpithet':'test1',
+       'infraspecificEpithet':'test2',
+       'sex':'test3',
+       'lifeStage':'test4',
+       'patch':'test5'
      },{
+      'genus':'test',
+      'specificEpithet':'test1',
+      'infraspecificEpithet':'test2',
+      'sex':'test3',
+      'lifeStage':'test4',
+      'patch':'test5'
 
-     }]
+     }];
+     this.searchResult = testSearchResult;
+     console.log(this.searchResult);
   }
 
 }
