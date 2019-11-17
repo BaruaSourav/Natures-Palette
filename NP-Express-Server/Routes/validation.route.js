@@ -8,6 +8,68 @@ const fs = require("fs");
 const path = require("path");
 
 var multer = require("multer");
+// Validation templates 
+// Museum Template 
+var museumTemplateHeaders = [
+  'FileName',
+  'institutionCode',
+  'collectionCode',
+  'catalogueNumber',
+  'class',
+  'order',
+  'family',
+  'genus',
+  'specificEpithet',
+  'infraspecificEpithet',
+  'sex',
+  'lifeStage',
+  'country',
+  'locality',
+  'decimalLatitude',
+  'decimalLongitude',
+  'geodeticDatum',
+  'verbatimElevation',
+  'eventDate',
+  'measurementDeterminedDate',
+  'Patch',
+  'LightAngle1',
+  'LightAngle2',
+  'ProbeAngle1',
+  'ProbeAngle2',
+  'Replicate',
+  'Comments'
+
+]
+
+// Field Template 
+var fieldTemplateHeaders = [
+  'FileName',
+  'UniqueID',
+  'class',
+  'order',
+  'family',
+  'genus',
+  'specificEpithet',
+  'infraspecificEpithet',
+  'sex',
+  'lifeStage',
+  'country',
+  'locality',
+  'decimalLatitude',
+  'decimalLongitude',
+  'geodeticDatum',
+  'verbatimElevation',
+  'eventDate',
+  'measurementDeterminedDate',
+  'Patch',
+  'LightAngle1',
+  'LightAngle2',
+  'ProbeAngle1',
+  'ProbeAngle2',
+  'Replicate',
+  'Comments'
+
+]
 
 upload = multer();
 // Defining validation route for metadata file
@@ -15,10 +77,15 @@ validationroutes
   .route("/primaryvalidation")
   .post(upload.none(), function(req, res) {
     //console.log(util.inspect(req.file, false, null, true));
-    fs.createReadStream(path.resolve(__dirname, "../filepersistance/tempvalidationfiles/"+req.body.metadatafilename))
-      .pipe(csv()).
-      on("header", row =>{
-        console.log(row);
+    fs.createReadStream(
+      path.resolve(
+        __dirname,
+        "../filepersistance/tempvalidationfiles/" + req.body.metadatafilename
+      )
+    )
+      .pipe(csv())
+      .on("headers", headers => {
+        console.log(`all headers: ${headers}`);
       })
       .on("data", row => {
         //console.log(row);
