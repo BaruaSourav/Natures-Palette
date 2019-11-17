@@ -8,6 +8,8 @@ const fs = require("fs");
 const path = require("path");
 
 var multer = require("multer");
+
+
 // Validation templates 
 // Museum Template 
 var museumTemplateHeaders = [
@@ -41,7 +43,7 @@ var museumTemplateHeaders = [
 
 ]
 
-// Field Template 
+// Field Template Headers
 var fieldTemplateHeaders = [
   'FileName',
   'UniqueID',
@@ -76,7 +78,8 @@ upload = multer();
 validationroutes
   .route("/primaryvalidation")
   .post(upload.none(), function(req, res) {
-    //console.log(util.inspect(req.file, false, null, true));
+    var headersMatchWithTemplate = false;
+    var 
     fs.createReadStream(
       path.resolve(
         __dirname,
@@ -86,6 +89,17 @@ validationroutes
       .pipe(csv())
       .on("headers", headers => {
         console.log(`all headers: ${headers}`);
+        // checking if the column name matches with the supplied template
+        // TODO: need to implement separate checking flow for the field data template
+        if(JSON.stringify(headers)==JSON.stringify(museumTemplateHeaders)){
+            headersMatchWithTemplate = true;
+            console.log("NP logs: headers matches with template");
+        }
+        else{
+          headersMatchWithTemplate = false;
+          console.log("NP logs: headers does not match with template");
+
+        }
       })
       .on("data", row => {
         //console.log(row);
@@ -110,5 +124,9 @@ validationroutes
 validationroutes.route("/").get(function(req, res) {
   res.json("validation route works perfectly");
 });
+
+
+
+
 
 module.exports = validationroutes;
