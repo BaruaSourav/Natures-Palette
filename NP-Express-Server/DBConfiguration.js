@@ -1,3 +1,4 @@
 module.exports = {
-    DB: 'mongodb://localhost:27017/NPDB'
- };
+    DB: 'mongodb+srv://admin:Admin123mun@cluster-mun-wpacy.mongodb.net/test?retryWrites=true&w=majority'
+
+};
