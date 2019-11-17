@@ -44,6 +44,7 @@ export class SubmissionService {
       .subscribe((res) => {
       console.log(res);
     });
+
     const validationform: any = new FormData();
     validationform.append("rawfilename",rawfile.name);
     validationform.append("metadatafilename",metadatafile.name);

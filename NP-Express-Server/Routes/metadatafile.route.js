@@ -45,8 +45,8 @@ metadataroutes.route('/validate').post(function(req,res){
           console.log(err);
           return res.end(err);
       }
-      console.log("NP MetadataRoute Message: File is uploaded to /filepersistance/tempvalidationfile folder")
-      res.end("NP MetadataRoute Message: File is uploaded to /filepersistance/tempvalidationfile folder");
+      console.log("NP MetadataRoute Message: File is uploaded to /filepersistance/tempvalidationfiles folder")
+      res.end("NP MetadataRoute Message: File is uploaded to /filepersistance/tempvalidationfiles folder");
   });
 });
 

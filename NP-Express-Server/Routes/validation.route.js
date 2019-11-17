@@ -6,74 +6,70 @@ const validationroutes = express.Router();
 const csv = require("csv-parser");
 const fs = require("fs");
 const path = require("path");
-var AdmZip = require('adm-zip');
-
+var AdmZip = require("adm-zip");
 
 var multer = require("multer");
 
-
-// Validation templates 
-// Museum Template 
+// Validation templates
+// Museum Template
 var museumTemplateHeaders = [
-  'FileName',
-  'institutionCode',
-  'collectionCode',
-  'catalogueNumber',
-  'class',
-  'order',
-  'family',
-  'genus',
-  'specificEpithet',
-  'infraspecificEpithet',
-  'sex',
-  'lifeStage',
-  'country',
-  'locality',
-  'decimalLatitude',
-  'decimalLongitude',
-  'geodeticDatum',
-  'verbatimElevation',
-  'eventDate',
-  'measurementDeterminedDate',
-  'Patch',
-  'LightAngle1',
-  'LightAngle2',
-  'ProbeAngle1',
-  'ProbeAngle2',
-  'Replicate',
-  'Comments'
-
-]
+  "FileName",
+  "institutionCode",
+  "collectionCode",
+  "catalogueNumber",
+  "class",
+  "order",
+  "family",
+  "genus",
+  "specificEpithet",
+  "infraspecificEpithet",
+  "sex",
+  "lifeStage",
+  "country",
+  "locality",
+  "decimalLatitude",
+  "decimalLongitude",
+  "geodeticDatum",
+  "verbatimElevation",
+  "eventDate",
+  "measurementDeterminedDate",
+  "Patch",
+  "LightAngle1",
+  "LightAngle2",
+  "ProbeAngle1",
+  "ProbeAngle2",
+  "Replicate",
+  "Comments"
+];
 
 // Field Template Headers
 var fieldTemplateHeaders = [
-  'FileName',
-  'UniqueID',
-  'class',
-  'order',
-  'family',
-  'genus',
-  'specificEpithet',
-  'infraspecificEpithet',
-  'sex',
-  'lifeStage',
-  'country',
-  'locality',
-  'decimalLatitude',
-  'decimalLongitude',
-  'geodeticDatum',
-  'verbatimElevation',
-  'eventDate',
-  'measurementDeterminedDate',
-  'Patch',
-  'LightAngle1',
-  'LightAngle2',
-  'ProbeAngle1',
-  'ProbeAngle2',
-  'Replicate',
-  'Comments'
-
-]
+  "FileName",
+  "UniqueID",
+  "class",
+  "order",
+  "family",
+  "genus",
+  "specificEpithet",
+  "infraspecificEpithet",
+  "sex",
+  "lifeStage",
+  "country",
+  "locality",
+  "decimalLatitude",
+  "decimalLongitude",
+  "geodeticDatum",
+  "verbatimElevation",
+  "eventDate",
+  "measurementDeterminedDate",
+  "Patch",
+  "LightAngle1",
+  "LightAngle2",
+  "ProbeAngle1",
+  "ProbeAngle2",
+  "Replicate",
+  "Comments"
+];
 
 upload = multer();
 // Defining validation route for metadata file
@@ -82,6 +78,7 @@ validationroutes
   .post(upload.none(), function(req, res) {
     var headersMatchWithTemplate = false;
     var rawFileIsConsistent = false;
+    // checking for the header name match validation
     fs.createReadStream(
       path.resolve(
         __dirname,
@@ -93,42 +90,44 @@ validationroutes
         console.log(`all headers: ${headers}`);
         // checking if the column name matches with the supplied template
         // TODO: need to implement separate checking flow for the field data template
-        if(JSON.stringify(headers)==JSON.stringify(museumTemplateHeaders)){
-            headersMatchWithTemplate = true;
-            console.log("NP logs: headers matches with template");
-        }
-        else{
+        if (JSON.stringify(headers) == JSON.stringify(museumTemplateHeaders)) {
+          headersMatchWithTemplate = true;
+          console.log("NP logs: headers matches with template");
+        } else {
           headersMatchWithTemplate = false;
           console.log("NP logs: headers does not match with template");
-
         }
       })
-      .on("data", row => {
-        
-      })
+      .on("data", row => {})
       .on("end", () => {
         console.log("CSV file successfully processed");
       });
 
-    if (err) {
-      console.log(err);
-      return res.end(err);
-    }
-    console.log("NP RawFile Route Message: File is uploaded to /filepersistance/tempvalidationfile folder");
-
-
-    res.end(
-      "NP RawFile Message: File is uploaded to /filepersistance/tempvalidationfile folder"
+    // unzipping the zipped file
+    var rawfilepath = path.resolve(
+      __dirname,
+      "../filepersistance/tempvalidationfiles/" + req.body.rawfilename
     );
+    var zippedRawFile = new AdmZip(rawfilepath);
+    // var extractedRawFiles = zippedRawFile.getEntries();
+    var extractionPath = path.resolve(
+      __dirname,
+      "../filepersistance/tempvalidationfiles/" + (req.body.rawfilename.substring(0,req.body.rawfilename.length-4)) +"/"
+    );
+    zippedRawFile.extractAllTo(extractionPath);
+    console.log(
+      extractionPath
+    );
+
+    console.log(
+      "NP RawFile Route Message: File is uploaded to /filepersistance/tempvalidationfile folder"
+    );
+    res.end("Respone from primary validation");
   });
 
 // Defined get data(index or listing) route
 validationroutes.route("/").get(function(req, res) {
   res.json("validation route works perfectly");
 });
-
-
-
-
 
 module.exports = validationroutes;

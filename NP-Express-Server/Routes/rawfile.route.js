@@ -45,8 +45,8 @@ rawfileroutes.route('/validate').post(function(req,res){
           console.log(err);
           return res.end(err);
       }
-      console.log("NP RawFile Route Message: File is uploaded to /filepersistance/tempvalidationfile folder")
-      res.end("NP RawFile Message: File is uploaded to /filepersistance/tempvalidationfile folder");
+      console.log("NP RawFile Route Message: File is uploaded to /filepersistance/tempvalidationfiles folder")
+      res.end("NP RawFile Message: File is uploaded to /filepersistance/tempvalidationfiles folder");
   });
 });
 
