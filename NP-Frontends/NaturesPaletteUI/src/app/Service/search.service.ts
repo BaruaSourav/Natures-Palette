@@ -15,7 +15,7 @@ export class SearchService {
       this.uri = this.config.apiurl;
   }
 
-  addSearch(search: Search) {
+  search(search: Search) {
     // const obj = {
     // };
     console.log(search);

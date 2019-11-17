@@ -11,7 +11,7 @@ import { FormBuilder, FormControl } from '@angular/forms'
 })
 export class SearchComponent implements OnInit {
   private searchInfo: Search;
-
+  private searchResult: Any;
 
   searchtext = new FormControl('');
   institutioncode = new FormControl('');
@@ -51,10 +51,16 @@ export class SearchComponent implements OnInit {
     this.searchInfo.LifeStage = this.lifestage.value;
     this.searchInfo.Country = this.country.value;
     this.searchInfo.Patch = this.patch.value;
-    console.log(this.searchInfo);
+    // console.log(this.searchInfo);
 
     // passing submissioninfo to service
-    this.service.addSearch(this.searchInfo);
+    // searchresult = this.service.search(this.searchInfo);
+     testSearchResult = [
+       {
+       '':'test'
+     },{
+
+     }]
   }
 
 }
