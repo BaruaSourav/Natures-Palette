@@ -6,6 +6,8 @@ const validationroutes = express.Router();
 const csv = require("csv-parser");
 const fs = require("fs");
 const path = require("path");
+var AdmZip = require('adm-zip');
+
 
 var multer = require("multer");
 
@@ -79,7 +81,7 @@ validationroutes
   .route("/primaryvalidation")
   .post(upload.none(), function(req, res) {
     var headersMatchWithTemplate = false;
-    var 
+    var rawFileIsConsistent = false;
     fs.createReadStream(
       path.resolve(
         __dirname,
@@ -102,7 +104,7 @@ validationroutes
         }
       })
       .on("data", row => {
-        //console.log(row);
+        
       })
       .on("end", () => {
         console.log("CSV file successfully processed");
@@ -112,9 +114,9 @@ validationroutes
       console.log(err);
       return res.end(err);
     }
-    console.log(
-      "NP RawFile Route Message: File is uploaded to /filepersistance/tempvalidationfile folder"
-    );
+    console.log("NP RawFile Route Message: File is uploaded to /filepersistance/tempvalidationfile folder");
+
+
     res.end(
       "NP RawFile Message: File is uploaded to /filepersistance/tempvalidationfile folder"
     );
