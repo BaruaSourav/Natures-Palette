@@ -9,11 +9,36 @@ const path = require("path");
 
 var multer = require("multer");
 // Validation templates 
-// Field Template 
-var fieldTemplateHeaders = [
+// Museum Template 
+var museumTemplateHeaders = [
   'FileName',
   'institutionCode',
-  'collectionCode'
+  'collectionCode',
+  'catalogueNumber',
+  'class',
+  'order',
+  'family',
+  'genus',
+  'specificEpithet',
+  'infraspecificEpithet',
+  'sex',
+  'lifeStage',
+  'country',
+  'locality',
+  'decimalLatitude',
+  'decimalLongitude',
+  'geodeticDatum',
+  'verbatimElevation',
+  'eventDate',
+  'measurementDeterminedDate',
+  'Patch',
+  'LightAngle1',
+  'LightAngle2',
+  'ProbeAngle1',
+  'ProbeAngle2',
+  'Replicate',
+  'Comments'
+
 ]
 
 upload = multer();
