@@ -41,6 +41,36 @@ var museumTemplateHeaders = [
 
 ]
 
+// Field Template 
+var fieldTemplateHeaders = [
+  'FileName',
+  'UniqueID',
+  'class',
+  'order',
+  'family',
+  'genus',
+  'specificEpithet',
+  'infraspecificEpithet',
+  'sex',
+  'lifeStage',
+  'country',
+  'locality',
+  'decimalLatitude',
+  'decimalLongitude',
+  'geodeticDatum',
+  'verbatimElevation',
+  'eventDate',
+  'measurementDeterminedDate',
+  'Patch',
+  'LightAngle1',
+  'LightAngle2',
+  'ProbeAngle1',
+  'ProbeAngle2',
+  'Replicate',
+  'Comments'
+
+]
+
 upload = multer();
 // Defining validation route for metadata file
 validationroutes
