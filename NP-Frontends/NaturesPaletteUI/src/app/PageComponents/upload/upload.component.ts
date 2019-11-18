@@ -18,6 +18,7 @@ export class UploadComponent implements OnInit {
   public metadatafilename: string;
   public rawFileName: string;
   public isValidated: boolean;
+  public validationStatus: ValidationStatus;
 
   public isUploaded: boolean;
 
@@ -42,14 +43,14 @@ export class UploadComponent implements OnInit {
 
 
 
-  constructor(private service: SubmissionService) {
+  constructor(public service: SubmissionService) {
     this.hasAgreed = false;
     this.submissionInfo = new Submission();
     this.isPublished = false;
     this.isEmbargo = false;
     this.isValidated = false;
     this.isUploaded = false;
-
+    this.validationStatus = {messages:[],isValidated: false};
     // initial values
     this.rawFileName = 'Choose Files';
     this.metadatafilename = 'Choose Files';
@@ -112,8 +113,18 @@ export class UploadComponent implements OnInit {
     this.rawFileName = this.rawDataFile.name;
   }
   validate() {
-      this.service.validateFiles(this.metadataFile, this.rawDataFile);
-      this.isValidated = true;
+      this.service.validateFiles(this.metadataFile, this.rawDataFile)
+      .subscribe((result: ValidationStatus)=>{
+        // console.log("result " + result.isValidated);
+        this.isValidated = result.isValidated;
+        this.validationStatus = result;
+      }
+      );
+
   }
 
+}
+interface ValidationStatus{
+  messages:any;
+  isValidated:any;
 }

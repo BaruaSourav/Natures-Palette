@@ -24,6 +24,7 @@ const app = express();
 //pointing to the submission route
 
 //app.use(connect.bodyParser());
+app.set('json spaces', 40);
 app.use(bodyParser.json());
 app.use(cors());
 //create a cors middleware

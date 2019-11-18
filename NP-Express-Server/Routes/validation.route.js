@@ -78,6 +78,7 @@ validationroutes
   .post(upload.none(), function(req, res) {
     var headersMatchWithTemplate = false;
     var rawFileIsConsistent = false;
+    var messages = [];
     // checking for the header name match validation
     fs.createReadStream(
       path.resolve(
@@ -92,10 +93,15 @@ validationroutes
         // TODO: need to implement separate checking flow for the field data template
         if (JSON.stringify(headers) == JSON.stringify(museumTemplateHeaders)) {
           headersMatchWithTemplate = true;
+          messages.push("Metadata headers validated against templates");
+          console.log(messages);
           console.log("NP logs: headers matches with template");
+          res.json({ 'messages' : messages, 'isValidated': true });
         } else {
           headersMatchWithTemplate = false;
           console.log("NP logs: headers does not match with template");
+          messages.push("Metadata headers does not match with template");
+          res.json({ 'messages' : messages , 'isValidated': false});
         }
       })
       .on("data", row => {})
@@ -108,21 +114,15 @@ validationroutes
       __dirname,
       "../filepersistance/tempvalidationfiles/" + req.body.rawfilename
     );
-    var zippedRawFile = new AdmZip(rawfilepath);
-    // var extractedRawFiles = zippedRawFile.getEntries();
-    var extractionPath = path.resolve(
-      __dirname,
-      "../filepersistance/tempvalidationfiles/" + (req.body.rawfilename.substring(0,req.body.rawfilename.length-4)) +"/"
-    );
-    zippedRawFile.extractAllTo(extractionPath);
-    console.log(
-      extractionPath
-    );
+    //
 
     console.log(
       "NP RawFile Route Message: File is uploaded to /filepersistance/tempvalidationfile folder"
     );
-    res.end("Respone from primary validation");
+    // res.end("Respone from primary validation");
+    
+  
+    
   });
 
 // Defined get data(index or listing) route

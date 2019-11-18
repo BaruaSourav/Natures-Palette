@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Submission } from './../Models/Submission';
-import { NaturesPaletteConfig } from './../NaturesPaletteConfig';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Submission } from "./../Models/Submission";
+import { NaturesPaletteConfig } from "./../NaturesPaletteConfig";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class SubmissionService {
   config: NaturesPaletteConfig;
@@ -19,39 +19,45 @@ export class SubmissionService {
     // };
     console.log(submission);
 
-    this.http.post(`${this.uri}/submissions/add`, submission)
-      .subscribe((res) => {
-        console.log(res);
-      }
-      );
+    this.http.post(`${this.uri}/submissions/add`, submission).subscribe(res => {
+      console.log(res);
+    });
   }
   validateFiles(metadatafile: File, rawfile: File) {
     // console.log(metadatafile);
     let fileConsistencyValidated = false;
     const metadataform: any = new FormData();
-    metadataform.append('metadatafile', metadatafile, metadatafile.name);
-    const rawfileform: any= new FormData();
-    rawfileform.append('rawfile',rawfile, rawfile.name);
+    metadataform.append("metadatafile", metadatafile, metadatafile.name);
+    const rawfileform: any = new FormData();
+    rawfileform.append("rawfile", rawfile, rawfile.name);
     // posting metadata file for validation
 
-    this.http.post(`${this.uri}/metadata/validate`, metadataform)
-      .subscribe((res) => {
+    this.http
+      .post(`${this.uri}/metadata/validate`, metadataform)
+      .subscribe(res => {
         console.log(res);
-      }
+      });
+    console.log(rawfile);
+    let rawfilePostRequest = this.http
+      .post(`${this.uri}/rawfile/validate`, rawfileform)
+      .subscribe(
+        res => {
+          console.log(res);
+        },
+        err => console.error(err),
+        () => {
+          console.log("observable complete");
+        }
       );
-      console.log(rawfile);
-    this.http.post(`${this.uri}/rawfile/validate`, rawfileform)
-      .subscribe((res) => {
-      console.log(res);
-    });
-
+    console.log(rawfilePostRequest);
     const validationform: any = new FormData();
-    validationform.append("rawfilename",rawfile.name);
-    validationform.append("metadatafilename",metadatafile.name);
+    validationform.append("rawfilename", rawfile.name);
+    validationform.append("metadatafilename", metadatafile.name);
 
-    this.http.post(`${this.uri}/validation/primaryvalidation`,validationform)
-    .subscribe((res) => {
-      console.log((res));
-    });
+     return this.http
+      .post(`${this.uri}/validation/primaryvalidation`, validationform)
+      // .subscribe(res => {
+      //     // return res;
+      // });
   }
 }

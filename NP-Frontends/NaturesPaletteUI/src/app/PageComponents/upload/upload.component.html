@@ -190,9 +190,12 @@
                         </div>
                     </div>
                 </form>
-                <div class="alert alert-success" role="alert" *ngIf="this.isValidated">
-                    Metadata File and Raw File validated
+                <div *ngIf="(this.validationStatus.isValidated)" class="alert alert-success mt-2" role="alert">
+                    {{this.validationStatus.messages[0]}}
                 </div>
+                <div *ngIf="(!this.validationStatus.isValidated) && (this.validationStatus.messages[0])" class="alert alert-danger mt-2" role="alert">
+                  {{this.validationStatus.messages[0]}}
+              </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
