@@ -53,10 +53,11 @@ export class SearchComponent implements OnInit {
     this.searchInfo.LifeStage = this.lifestage.value;
     this.searchInfo.Country = this.country.value;
     this.searchInfo.Patch = this.patch.value;
-    // console.log(this.searchInfo);
+    console.log(this.searchInfo);
 
     // passing submissioninfo to service
-    // searchresult = this.service.search(this.searchInfo);
+    this.searchResult = this.service.search(this.searchInfo);
+    console.log(this.searchResult);
       const testSearchResult = [
        {
        'genus':'test',

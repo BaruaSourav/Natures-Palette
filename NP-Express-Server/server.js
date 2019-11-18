@@ -10,7 +10,8 @@ config = require('./DBConfiguration');
 const submissionroute = require('./Routes/submission.route');
 const metadataroute = require('./Routes/metadatafile.route');
 const rawfileroute = require ('./Routes/rawfile.route');
-const validationroute = require('./Routes/validation.route')
+const validationroute = require('./Routes/validation.route');
+const searchroute = require('./Routes/search.route')
 
 //mongodb connection promise
 mongoose.Promise = global.Promise;
@@ -40,6 +41,7 @@ app.use('/submissions', submissionroute);
 app.use('/metadata', metadataroute);
 app.use('/rawfile',rawfileroute);
 app.use('/validation',validationroute);
+app.use('/search',searchroute);
 let port = process.env.PORT || 4000;
 
 
