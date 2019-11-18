@@ -14,6 +14,10 @@
       height: 430px;
     }
 
+    .function-image {
+      margin: 40px;
+    }
+
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
     .row.content {
       height: 450px
