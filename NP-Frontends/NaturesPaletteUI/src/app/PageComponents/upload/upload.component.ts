@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SubmissionService } from './../../Service/submission.service';
 import { Submission } from './../../Models/Submission';
-import { FormBuilder, FormControl } from '@angular/forms'
+import { FormBuilder, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-upload',
@@ -19,6 +19,7 @@ export class UploadComponent implements OnInit {
   public rawFileName: string;
   public isValidated: boolean;
   public validationStatus: ValidationStatus;
+  public isSuccessful: boolean;
 
   public isUploaded: boolean;
 
@@ -50,6 +51,7 @@ export class UploadComponent implements OnInit {
     this.isEmbargo = false;
     this.isValidated = false;
     this.isUploaded = false;
+    this.isSuccessful = false;
     this.validationStatus = {messages:[],isValidated: false};
     // initial values
     this.rawFileName = 'Choose Files';
@@ -87,7 +89,7 @@ export class UploadComponent implements OnInit {
     // Constructing the submissioninfo instance
     this.submissionInfo.TypeOfData = this.typeofdata.value;
     this.submissionInfo.DataSource = this.sourceofdata.value;
-    this.submissionInfo.Name = this.firstname.value + this.lastname.value;
+    this.submissionInfo.Name = this.firstname.value +' '+ this.lastname.value;
     this.submissionInfo.Email = this.email.value;
     this.submissionInfo.InstAffiliation = this.instituationaffiliation.value;
     this.submissionInfo.Doi = this.doi.value;
@@ -98,8 +100,11 @@ export class UploadComponent implements OnInit {
     this.submissionInfo.IsPublished = this.isPublished;
     console.log(this.submissionInfo);
 
+
     // passing submissioninfo to service
     this.service.addSubmission(this.submissionInfo);
+    this.isSuccessful = true;
+
   }
 
   metadataFileChanged(e) {
