@@ -14,13 +14,13 @@ let MetadataInformation = new Schema(
             type: Number
         },
         institutionCode: {
-            type: Number
+            type: String
         },
         collectionCode: {
-            type: Number
+            type: String
         },
         catalogueNumber: {
-            type: Number
+            type: String
         },
         class: {
             type: String

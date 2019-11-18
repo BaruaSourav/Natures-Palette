@@ -98,6 +98,8 @@ export class UploadComponent implements OnInit {
     this.submissionInfo.RawFileUrl = this.rawFileName;
     this.submissionInfo.IsEmbargo = this.isEmbargo;
     this.submissionInfo.IsPublished = this.isPublished;
+    this.submissionInfo.RawFileName = this.rawDataFile.name;
+    this.submissionInfo.MetaDataFileName = this.metadataFile.name;
     console.log(this.submissionInfo);
 
 

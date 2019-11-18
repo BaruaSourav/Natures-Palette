@@ -12,4 +12,6 @@ export class Submission {
   RawFileUrl: string;
   Doi: string;
   ReferenceNumber: string;
+  RawFileName: string;
+  MetaDataFileName: string;
 }

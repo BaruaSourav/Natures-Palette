@@ -3,13 +3,60 @@ const express = require('express');
 const app = express();
 const submissionroutes = express.Router();
 var multer = require('multer');
+const fs = require("fs");
+const path = require("path");
+const csv = require("csv-parser");
 
 // Submission Model
 let SubmissionModel = require('../Models/SubmissionModel');
+let MetadataInfoModel = require('../Models/MetadataInformationModel');
 
 var upload = multer()
 // Defined store route for submission information
 submissionroutes.route('/add').post(upload.none(), function (req, res) {
+  // moving metadata files from temp to metadatafiles folder
+  let tempmetadatapath = path.resolve(
+        __dirname,
+        "../filepersistance/tempvalidationfiles/" + req.body.MetaDataFileName
+      );
+  let metadatapath =  path.resolve(
+        __dirname,
+        "../filepersistance/metadatafiles/" + req.body.MetaDataFileName
+      );
+  let moveMetadataFileCallback = function(e){
+    console.log(e);
+  }
+  fs.rename(tempmetadatapath, metadatapath, moveMetadataFileCallback);
+  ///////////////////////////////////////////////////////////////////////////
+   // moving rawfile from temp to metadatafiles folder
+  let temprawfilepath = path.resolve(
+        __dirname,
+        "../filepersistance/tempvalidationfiles/" + req.body.RawFileName
+      );
+  let rawfilepath =  path.resolve(
+        __dirname,
+        "../filepersistance/rawfiles/" + req.body.RawFileName
+      );
+  let moveRawFileCallback = function(e){
+    console.log(e);
+  }
+  fs.rename(temprawfilepath, rawfilepath, moveRawFileCallback);
+  // TODO: Need to unzip the raw file here
+  //  Reading metadata csv file's rows
+  fs.createReadStream(metadatapath).pipe(csv())
+  .on("data", row => {
+    let metadatainfo = new MetadataInfoModel(row);
+    //console.log(metadatainfo);
+    metadatainfo.save()
+      .then(metadatainfo => {
+        //console.log(metadatainfo);
+      })
+      .catch(err =>{
+        console.log(err);
+      });
+  });
+
+
   let submission = new SubmissionModel(req.body);
   submission.save()
     .then(submission => {
