@@ -93,7 +93,7 @@ let MetadataInformation = new Schema(
         }
     },
     {
-        collection: 'metadatafile'
+        collection: 'metadatainformation'
     }
 );
 
