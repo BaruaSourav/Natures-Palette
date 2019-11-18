@@ -6,7 +6,17 @@
       color: black;
     }
 
-  
+    .bd-example {
+      margin: 40px;
+    }
+
+    .w-100 {
+      height: 430px;
+    }
+
+    .function-image {
+      margin: 40px;
+    }
 
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
     .row.content {
