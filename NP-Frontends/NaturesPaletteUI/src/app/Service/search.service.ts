@@ -17,10 +17,6 @@ export class SearchService {
 
   search(search: Search) {
     console.log(search);
-    this.http.post(`${this.uri}/search`, search)
-      .subscribe((res) => {
-        console.log(res);
-      }
-      );
+    return this.http.post(`${this.uri}/search`, search);
   }
 }

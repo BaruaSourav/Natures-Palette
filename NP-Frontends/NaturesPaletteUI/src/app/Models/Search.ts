@@ -1,16 +1,16 @@
 export class Search {
-    SearchText: string;
-    InstitutionCode: string;
-    CollectionCode: string;
-    CatalogueNumber: string;
-    Class: string;
-    Order: string;
-    Family: string;
-    Genus: string;
-    SpecificEpithet: string;
-    InfraspecificEpithet: string;
-    Sex: string;
-    LifeStage: string;
-    Country: string;
+    searchText: string;
+    institutionCode: string;
+    collectionCode: string;
+    catalogueNumber: string;
+    class: string;
+    order: string;
+    family: string;
+    genus: string;
+    specificEpithet: string;
+    infraspecificEpithet: string;
+    sex: string;
+    lifeStage: string;
+    country: string;
     Patch: string;
 }

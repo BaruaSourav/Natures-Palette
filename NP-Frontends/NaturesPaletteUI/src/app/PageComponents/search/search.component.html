@@ -105,9 +105,17 @@
   </div>
 
   <hr>
+  <div class="row">
+      <div class="col-md-10">
+        <span >{{searchResult.length}} results</span>
+      </div>
 
-  <table class="table table-bordered">
-    <thead>
+      <div class="col-md-2">
+        <button *ngIf="searchResult.length != 0" type="button" id="downloadButton" class="btn btn-primary download-button">Download All</button>
+      </div>
+    </div>
+  <table *ngIf="searchResult.length != 0" class="table table-bordered">
+    <thead class="thead-dark">
       <tr>
         <th scope="col">genus</th>
         <th scope="col">specificEpithet</th>
@@ -124,19 +132,13 @@
         <td>{{ result.infraspecificEpithet }}</td>
         <td>{{ result.sex }}</td>
         <td>{{ result.lifeStage }}</td>
-        <td>{{ result.patch }}</td>
+        <td>{{ result.Patch }}</td>
       </tr>
-      
+
 
     </tbody>
   </table>
 
-  <div class="row">
-    <div class="col-md-10"></div>
 
-    <div class="col-md-2">
-      <button type="button" id="downloadButton" class="btn btn-primary download-button">Download All</button>
-    </div>
-  </div>
 
 </div>

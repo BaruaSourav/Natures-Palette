@@ -11,7 +11,7 @@ import { FormBuilder, FormControl } from '@angular/forms'
 })
 export class SearchComponent implements OnInit {
   private searchInfo: Search;
-  public searchResult: any;
+  public searchResult;
 
 
   searchtext = new FormControl('');
@@ -39,44 +39,50 @@ export class SearchComponent implements OnInit {
 
   SearchInformation() {
     // Constructing the searchinfo instance
-    this.searchInfo.SearchText = this.searchtext.value;
-    this.searchInfo.InstitutionCode = this.institutioncode.value;
-    this.searchInfo.CollectionCode = this.collectioncode.value;
-    this.searchInfo.CatalogueNumber = this.cataloguenumber.value;
-    this.searchInfo.Class = this.class.value;
-    this.searchInfo.Order = this.order.value;
-    this.searchInfo.Family = this.family.value;
-    this.searchInfo.Genus = this.genus.value;
-    this.searchInfo.SpecificEpithet = this.specificepithet.value;
-    this.searchInfo.InfraspecificEpithet = this.infraspecificepithet.value;
-    this.searchInfo.Sex = this.sex.value;
-    this.searchInfo.LifeStage = this.lifestage.value;
-    this.searchInfo.Country = this.country.value;
+    this.searchInfo.searchText = this.searchtext.value;
+    this.searchInfo.institutionCode = this.institutioncode.value;
+    this.searchInfo.collectionCode = this.collectioncode.value;
+    this.searchInfo.catalogueNumber = this.cataloguenumber.value;
+    this.searchInfo.class = this.class.value;
+    this.searchInfo.order = this.order.value;
+    this.searchInfo.family = this.family.value;
+    this.searchInfo.genus = this.genus.value;
+    this.searchInfo.specificEpithet = this.specificepithet.value;
+    this.searchInfo.infraspecificEpithet = this.infraspecificepithet.value;
+    this.searchInfo.sex = this.sex.value;
+    this.searchInfo.lifeStage = this.lifestage.value;
+    this.searchInfo.country = this.country.value;
     this.searchInfo.Patch = this.patch.value;
     console.log(this.searchInfo);
 
     // passing submissioninfo to service
-    this.searchResult = this.service.search(this.searchInfo);
+    this.service.search(this.searchInfo)
+      .subscribe((result)=>{
+          console.log(result);
+          this.searchResult = result;
+      }
+      )
     console.log(this.searchResult);
-      const testSearchResult = [
-       {
-       'genus':'test',
-       'specificEpithet':'test1',
-       'infraspecificEpithet':'test2',
-       'sex':'test3',
-       'lifeStage':'test4',
-       'patch':'test5'
-     },{
-      'genus':'test',
-      'specificEpithet':'test1',
-      'infraspecificEpithet':'test2',
-      'sex':'test3',
-      'lifeStage':'test4',
-      'patch':'test5'
+    //   const testSearchResult = [
+    //    {
+    //    'genus':'test',
+    //    'specificEpithet':'test1',
+    //    'infraspecificEpithet':'test2',
+    //    'sex':'test3',
+    //    'lifeStage':'test4',
+    //    'patch':'test5'
+    //  },{
+    //   'genus':'test',
+    //   'specificEpithet':'test1',
+    //   'infraspecificEpithet':'test2',
+    //   'sex':'test3',
+    //   'lifeStage':'test4',
+    //   'patch':'test5'
 
-     }];
-     this.searchResult = testSearchResult;
+    //  }];
+     //this.searchResult = testSearchResult;
      console.log(this.searchResult);
   }
 
 }
+
