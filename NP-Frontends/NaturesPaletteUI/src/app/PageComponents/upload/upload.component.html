@@ -1,210 +1,234 @@
 <div class="container">
-    <div *ngIf="this.isSuccessful" class="alert alert-info mt-2 text-center" role="alert">
-        Submission successful. You will be notified through email when we verify and add the files to Nature's Palette's Repository.
+  <div *ngIf="this.isSuccessful" class="alert alert-info mt-2 text-center" role="alert">
+    Submission successful. You will be notified through email when we verify and add the files to Nature's Palette's
+    Repository.
+  </div>
+  <div class="card mb-4 mt-4 shadow-lg">
+    <div class="card-body">
+      <h2 class="featurette-heading" style="text-align: center;">Submission Instruction</h2>
+      Before starting the uploading process, please prepare your data set and make sure the meta data is available with
+      you which is associated with the raw data that your going to upload. The meta data should be in a proper format
+      with required details. Please
+      check below template for meta data file for field and museum type data. This repository will offer an open
+      opportunity to researches worldwide to collect spectral data for their research purpose, therefor please make sure
+      that you are providing
+      is legitimate and it’s owned by you. Please don’t upload any data that is protected by copy rights or patents. In
+      such case this repository won’t take any responsibility and won’t pay any penalties to any authorities.
+      <div class="checkbox_for_upload_componenet">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"
+            (change)="agreeCheckBoxChanged()">
+          <label class="form-check-label" for="inlineCheckbox1">I agree</label>
+        </div>
       </div>
-    <div class="card mb-4 mt-4 shadow-lg">
-        <div class="card-body">
-            <h2 class="featurette-heading" style="text-align: center;">Submission Instruction</h2>
-            Before starting the uploading process, please prepare your data set and make sure the meta data is available with you which is associated with the raw data that your going to upload. The meta data should be in a proper format with required details. Please
-            check below template for meta data file for field and museum type data. This repository will offer an open opportunity to researches worldwide to collect spectral data for their research purpose, therefor please make sure that you are providing
-            is legitimate and it’s owned by you. Please don’t upload any data that is protected by copy rights or patents. In such case this repository won’t take any responsibility and won’t pay any penalties to any authorities.
-            <div class="checkbox_for_upload_componenet">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" (change)="agreeCheckBoxChanged()">
-                    <label class="form-check-label" for="inlineCheckbox1">I agree</label>
-                </div>
-            </div>
-        </div>
-
-        <div class="card-footer">
-            <div class="button_for_upload_component">
-                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal1" [disabled]="!this.hasAgreed">Start</button>
-            </div>
-        </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-            <div class="card card_for_template mb-4 mt-4 shadow-lg">
-                <div class="card-body card_body_for_upload_componenet">
-                    <p>Template for <b>Reflectance</b> Metadata</p>
-                    <a class="a_tag_for_field_option" href="assets/Data/Field-based reflectance template metadata.csv">Field</a>
-                    <a href="assets/Data/Museum reflectance template metadata.csv">Museum</a>
-                </div>
-            </div>
-
-            <div class="card card_for_template mb-4 mt-4 shadow-lg">
-                <div class="card-body card_body_for_upload_componenet">
-                    <p>Template for <b>Transmittance</b> Metadata</p>
-                    <a class="a_tag_for_field_option" href="#Specify_a_Hyperlink_Target_href">Field</a> <a href="#Specify_a_Hyperlink_Target_href">Museum</a>
-                </div>
-            </div>
-
-            <div class="card card_for_template mb-4 mt-4 shadow-lg">
-                <div class="card-body card_body_for_upload_componenet">
-                    <p>Template for <b>Irradiance</b> Metadata</p>
-                    <a class="a_tag_for_field_option" href="#Specify_a_Hyperlink_Target_href">Field</a> <a href="#Specify_a_Hyperlink_Target_href">Museum</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3"></div>
+    <div class="card-footer">
+      <div class="button_for_upload_component">
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modal1"
+          [disabled]="!this.hasAgreed">Start</button>
+      </div>
     </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="card card_for_template mb-4 mt-4 shadow-lg">
+        <div class="card-body card_body_for_upload_componenet">
+          <p>Template for <b>Reflectance</b> Metadata</p>
+          <a class="a_tag_for_field_option" href="assets/Data/Field-based reflectance template metadata.csv">Field</a>
+          <a href="assets/Data/Museum reflectance template metadata.csv">Museum</a>
+        </div>
+      </div>
+
+      <div class="card card_for_template mb-4 mt-4 shadow-lg">
+        <div class="card-body card_body_for_upload_componenet">
+          <p>Template for <b>Transmittance</b> Metadata</p>
+          <a class="a_tag_for_field_option" href="#Specify_a_Hyperlink_Target_href">Field</a> <a
+            href="#Specify_a_Hyperlink_Target_href">Museum</a>
+        </div>
+      </div>
+
+      <div class="card card_for_template mb-4 mt-4 shadow-lg">
+        <div class="card-body card_body_for_upload_componenet">
+          <p>Template for <b>Irradiance</b> Metadata</p>
+          <a class="a_tag_for_field_option" href="#Specify_a_Hyperlink_Target_href">Field</a> <a
+            href="#Specify_a_Hyperlink_Target_href">Museum</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="step1modaltitle">Submission Step 1: Information</h5>
+<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="step1modaltitle">Submission Step 1: Information</h5>
+      </div>
+
+      <div class="modal-body">
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <input [formControl]="firstname" type="firstname" class="form-control" id="FirstName"
+                placeholder="First Name" required>
             </div>
 
-            <div class="modal-body">
-                <form>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <input [formControl]="firstname" type="firstname" class="form-control" id="FirstName" placeholder="First Name" required>
-                        </div>
 
+            <div class="form-group col-md-6">
+              <input [formControl]="lastname" type="lastname" class="form-control" id="LastName" placeholder="Last Name"
+                required>
+            </div>
 
-                        <div class="form-group col-md-6">
-                            <input [formControl]="lastname" type="lastname" class="form-control" id="LastName" placeholder="Last Name" required>
-                        </div>
+            <div class="form-group col-md-6">
+              <input [formControl]="email" type="email" class="form-control" id="Email" placeholder="Email" required>
+            </div>
 
-                        <div class="form-group col-md-6">
-                            <input [formControl]="email" type="email" class="form-control" id="Email" placeholder="Email" required>
-                        </div>
+            <div class="form-group col-md-6">
+              <input [formControl]="instituationaffiliation" type="inputinstituation" class="form-control"
+                id="inputInstituationAffiliation4" placeholder="Institution Affiliation">
+            </div>
+          </div>
 
-                        <div class="form-group col-md-6">
-                            <input [formControl]="instituationaffiliation" type="inputinstituation" class="form-control" id="inputInstituationAffiliation4" placeholder="Institution Affiliation">
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="inputState">Type of Data</label>
-                            <select [formControl]="typeofdata" id="typeofdata" class="form-control" required>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputState">Type of Data</label>
+              <select [formControl]="typeofdata" id="typeofdata" class="form-control" required>
                 <option>Reflectance</option>
                 <option>Transmittance</option>
                 <option>Irradiance</option>
               </select>
-                        </div>
+            </div>
 
-                        <div class="form-group col-md-6">
-                            <label for="inputState">Select Source of Data</label>
-                            <select [formControl]="sourceofdata" id="inputState" class="form-control" required>
+            <div class="form-group col-md-6">
+              <label for="inputState">Select Source of Data</label>
+              <select [formControl]="sourceofdata" id="inputState" class="form-control" required>
                 <option>Field</option>
                 <option>Museum</option>
               </select>
-                        </div>
-                    </div>
+            </div>
+          </div>
 
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <p>Have the Data been Published?</p>
-                            <div class="wrapper-class">
-                                <input class="mr-1" type="radio" name="isPublished" value="yes" (change)="isPublishChanged($event)">
-                                <label for="yes" class="mr-2">Yes</label>
-                                <input class="mr-1" type="radio" name="isPublished" value="no" (change)="isPublishChanged($event)">
-                                <label for="no">No</label>
-                            </div>
-                        </div>
-                    </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <p>Have the Data been Published?</p>
+              <div class="wrapper-class">
+                <input class="mr-1" type="radio" name="isPublished" value="yes" (change)="isPublishChanged($event)">
+                <label for="yes" class="mr-2">Yes</label>
+                <input class="mr-1" type="radio" name="isPublished" value="no" (change)="isPublishChanged($event)">
+                <label for="no">No</label>
+              </div>
+            </div>
+          </div>
 
-                    <div class="form-row" [hidden]="!this.isPublished">
-                        <div class="form-group col-md-6">
-                            <input [formControl]="referencenumber" type="referencenumber" class="form-control" id="inputReferenceNumber4" placeholder="Reference Number">
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <input [formControl]="doi" type="digitalobjectidentifier" class="form-control" id="inputdoi4" placeholder="Digital Object Identifier(DOI)">
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <p>Embargo?</p>
-                            <div class="wrapper-class ml-1">
-                                <input class="mr-1" type="radio" name="isEmbargo" value="yes" (change)="isEmbargoChanged($event)">
-                                <label class="mr-2" for="yes">Yes</label>
-                                <input class="mr-1" type="radio" name="isEmbargo" value="no" (change)="isEmbargoChanged($event)">
-                                <label for="no">No</label>
-                            </div>
-                        </div>
-
-                        <div class="form-group col-md-6" [hidden]="!this.isEmbargo">
-                            <label for="date">Date</label>
-                            <input [formControl]="embargodate" type="date" class="form-control" id="date" placeholder="Date" required>
-                        </div>
-                    </div>
-                </form>
+          <div class="form-row" [hidden]="!this.isPublished">
+            <div class="form-group col-md-6">
+              <input [formControl]="referencenumber" type="referencenumber" class="form-control"
+                id="inputReferenceNumber4" placeholder="Reference Number">
             </div>
 
-            <div class="modal-footer">
-
-                <!-- <button type="button" class="btn bg-warning" (click)="saveSubmissionInformation()">Test Submit</button> -->
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadFilesModal">Next</button>
+            <div class="form-group col-md-6">
+              <input [formControl]="doi" type="digitalobjectidentifier" class="form-control" id="inputdoi4"
+                placeholder="Digital Object Identifier(DOI)">
             </div>
-        </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <p>Embargo?</p>
+              <div class="wrapper-class ml-1">
+                <input class="mr-1" type="radio" name="isEmbargo" value="yes" (change)="isEmbargoChanged($event)">
+                <label class="mr-2" for="yes">Yes</label>
+                <input class="mr-1" type="radio" name="isEmbargo" value="no" (change)="isEmbargoChanged($event)">
+                <label for="no">No</label>
+              </div>
+            </div>
+
+            <div class="form-group col-md-6" [hidden]="!this.isEmbargo">
+              <label for="date">Date</label>
+              <input [formControl]="embargodate" type="date" class="form-control" id="date" placeholder="Date" required>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+
+        <!-- <button type="button" class="btn bg-warning" (click)="saveSubmissionInformation()">Test Submit</button> -->
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadFilesModal">Next</button>
+      </div>
     </div>
+  </div>
 </div>
 
 <!--Second step Modal-->
-<div class="modal fade" id="uploadFilesModal" style="min-height: 80vh !important;" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalScrollableTitle">Submission Step 2: Upload files</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<div class="modal fade" id="uploadFilesModal" style="min-height: 80vh !important;" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle">Submission Step 2: Upload files</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-            </div>
-            <div class="modal-body" style="min-height: 65vh;">
-                <form>
-                    <div class="form-row">
-                        <div class="col-md-12">
-                            <p class="text-info">Select your Metadata file</p>
-                            <form id="uploadForm">
-                                <div class="input-group mb-4">
-                                    <div class="custom-file">
-                                        <label class="custom-file-label" for="metadatafile">{{this.metadatafilename}}</label>
-                                        <input (change)="metadataFileChanged($event)" type="file" class="form-control" id="metadatafile" aria-describedby="metadatafile">
+      </div>
+      <div class="modal-body" style="min-height: 65vh;">
+        <form>
+          <div class="form-row">
+            <div class="col-md-12">
+              <p class="text-info">Select your Metadata file</p>
+              <form id="uploadForm">
+                <div class="input-group mb-4">
+                  <div class="custom-file">
+                    <label class="custom-file-label" for="metadatafile">{{this.metadatafilename}}</label>
+                    <input (change)="metadataFileChanged($event)" type="file" class="form-control" id="metadatafile"
+                      aria-describedby="metadatafile">
 
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-
-                        <div class="col-md-12">
-                            <p class="text-info">Select your Rawdata file</p>
-                            <form id="uploadForm">
-                                <div class="input-group mb-4">
-                                    <div class="custom-file">
-                                        <label class="custom-file-label" for="rawdatafile">{{this.rawFileName}}</label>
-                                        <input (change)="rawFileChanged($event)" type="file" class="" id="rawdatafile" aria-describedby="selectedfile">
-                                    </div>
-                                </div>
-                            </form>
-                            <button class="btn btn-secondary text-white" (click)=validate()>
-                  Validate Files
-              </button>
-                        </div>
-                    </div>
-                </form>
-                <div *ngIf="(this.validationStatus.isValidated)" class="alert alert-success mt-2" role="alert">
-                    {{this.validationStatus.messages[0]}}
+                  </div>
                 </div>
-                <div *ngIf="(!this.validationStatus.isValidated) && (this.validationStatus.messages[0])" class="alert alert-danger mt-2" role="alert">
-                  {{this.validationStatus.messages[0]}}
-              </div>
+              </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" [disabled]="!this.isValidated" (click)="saveSubmissionInformation()" data-dismiss="modal"
-                 onclick="$('#modal1').modal('hide')">Confirm File submission</button>
+
+            <div class="col-md-12">
+              <p class="text-info">Select your Rawdata file</p>
+              <form id="uploadForm">
+                <div class="input-group mb-4">
+                  <div class="custom-file">
+                    <label class="custom-file-label" for="rawdatafile">{{this.rawFileName}}</label>
+                    <input (change)="rawFileChanged($event)" type="file" class="" id="rawdatafile"
+                      aria-describedby="selectedfile">
+                  </div>
+                </div>
+              </form>
+              <button class="btn btn-primary text-white mr-1" (click)=uploadForValidation() style="width: 50%;" >
+                Upload Files for validation
+              </button>
+              <button class="btn btn-secondary text-white" (click)=validate() [disabled]="!this.isFilesUploadedForValidation">
+                Validate Files
+              </button>
             </div>
+          </div>
+        </form>
+        <div *ngIf="(this.validationStatus.isValidated)" class="alert alert-success mt-2" role="alert">
+          {{this.validationStatus.messages[0]}}
         </div>
+        <div *ngIf="(!this.validationStatus.isValidated) && (this.validationStatus.messages[0])"
+          class="alert alert-danger mt-2" role="alert">
+          {{this.validationStatus.messages[0]}}
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" [disabled]="!this.isValidated"
+          (click)="saveSubmissionInformation()" data-dismiss="modal" onclick="$('#modal1').modal('hide')">Confirm File
+          submission</button>
+      </div>
     </div>
+  </div>
 </div>
