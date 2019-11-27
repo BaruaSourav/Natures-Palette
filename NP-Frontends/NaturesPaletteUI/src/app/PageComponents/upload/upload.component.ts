@@ -20,6 +20,7 @@ export class UploadComponent implements OnInit {
   public isValidated: boolean;
   public validationStatus: ValidationStatus;
   public isSuccessful: boolean;
+  public isFilesUploadedForValidation:boolean;
 
   public isUploaded: boolean;
 
@@ -52,6 +53,7 @@ export class UploadComponent implements OnInit {
     this.isValidated = false;
     this.isUploaded = false;
     this.isSuccessful = false;
+    this.isFilesUploadedForValidation = false;
     this.validationStatus = {messages:[],isValidated: false};
     // initial values
     this.rawFileName = 'Choose Files';
@@ -124,6 +126,7 @@ export class UploadComponent implements OnInit {
     this.rawFileName = this.rawDataFile.name;
   }
   validate() {
+
       this.service.validateFiles(this.metadataFile, this.rawDataFile)
       .subscribe((result: ValidationStatus)=>{
         // console.log("result " + result.isValidated);
@@ -132,6 +135,12 @@ export class UploadComponent implements OnInit {
       }
       );
 
+  }
+  uploadForValidation(){
+      let isUploadComplete = this.service.uploadFilesForValidation(this.metadataFile, this.rawDataFile);
+      if(isUploadComplete == "Success"){
+        this.isFilesUploadedForValidation = true;
+      }
   }
 
 }

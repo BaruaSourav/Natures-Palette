@@ -79,6 +79,9 @@ validationroutes
     var headersMatchWithTemplate = false;
     var rawFileIsConsistent = false;
     var messages = [];
+    var referredFileNameList = [];
+    var rawDataFiles = [];
+
     // checking for the header name match validation
     fs.createReadStream(
       path.resolve(
@@ -96,33 +99,61 @@ validationroutes
           messages.push("Metadata headers validated against templates");
           console.log(messages);
           console.log("NP logs: headers matches with template");
-          res.json({ 'messages' : messages, 'isValidated': true });
+          headersMatchWithTemplate = true;
+          //res.json({ messages: messages, isValidated: true });
         } else {
           headersMatchWithTemplate = false;
           console.log("NP logs: headers does not match with template");
           messages.push("Metadata headers does not match with template");
-          res.json({ 'messages' : messages , 'isValidated': false});
+          headersMatchWithTemplate = false;
+          //res.json({ messages: messages, isValidated: false });
         }
       })
-      .on("data", row => {})
+      .on("data", row => {
+        referredFileNameList.push(row.FileName);
+      })
       .on("end", () => {
+        
+        // console.log("Referred File Name list :"+referredFileNameList);
+        // reading inside the zipped file
+        var rawfilepath = path.resolve(
+          __dirname,
+          "../filepersistance/tempvalidationfiles/" + req.body.rawfilename
+        );
+
+        //var zippedRawFile = new AdmZip("D:/Projects/Natures-Palette/NP-Express-Server/filepersistance/tempvalidationfiles/Sandoval 2017 M leucotis.zip");
+        var zippedRawFile = new AdmZip(rawfilepath);
+        var zipEntries = zippedRawFile.getEntries();
+        //console.log(zipEntries);
+        zipEntries.forEach(file => {
+          let temp = file.entryName.split('/')[1].split('.');
+          temp.pop();
+          temp.pop();
+          console.log(temp.join('.'));
+          rawDataFiles.push(temp.join('.'));
+          //console.log(rawDataFiles.length);
+        });
+        rawDataFiles.shift(); //removing first element
+        console.log(rawDataFiles.length);
+        console.log(referredFileNameList.length);
         console.log("CSV file successfully processed");
+
+        let difference = referredFileNameList.filter(x=> !rawDataFiles.includes(x));
+        // let differenceOpp = rawDataFiles.filter(x=> !referredFileNameList.includes(x));
+        console.log(difference);
+        //console.log(differenceOpp);
+        if(difference.length == 0)
+          rawFileIsConsistent = true;
+        else 
+          rawFileIsConsistent = false;
+
       });
 
-    // unzipping the zipped file
-    var rawfilepath = path.resolve(
-      __dirname,
-      "../filepersistance/tempvalidationfiles/" + req.body.rawfilename
-    );
-    //
 
     console.log(
       "NP RawFile Route Message: File is uploaded to /filepersistance/tempvalidationfile folder"
     );
     // res.end("Respone from primary validation");
-    
-  
-    
   });
 
 // Defined get data(index or listing) route
