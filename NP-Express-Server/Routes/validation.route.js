@@ -142,11 +142,24 @@ validationroutes
         // let differenceOpp = rawDataFiles.filter(x=> !referredFileNameList.includes(x));
         console.log(difference);
         //console.log(differenceOpp);
-        if(difference.length == 0)
-          rawFileIsConsistent = true;
-        else 
-          rawFileIsConsistent = false;
+        if(difference.length == 0){
+            rawFileIsConsistent = true;
+            messages.push("All raw files found on the zip file");
+
+        }
           
+        else {
+          rawFileIsConsistent = false;
+          messages.push(difference+" files not found")
+        }
+          
+        
+        if(rawFileIsConsistent && headersMatchWithTemplate){
+          res.json({ messages: messages, isValidated: true });
+        }
+        else{
+          res.json({ messages: messages, isValidated: false });
+        }
 
       });
 

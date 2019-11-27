@@ -71,33 +71,36 @@
         <h5 class="modal-title" id="step1modaltitle">Submission Step 1: Information</h5>
       </div>
 
-            <div class="modal-body">
-                <form>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <input [formControl]="firstname" type="firstname" class="form-control" id="FirstName" placeholder="First Name" ngModel (change)="formControlIsDirty()" required>
-                        </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <input [formControl]="firstname" type="firstname" class="form-control" id="FirstName"
+                placeholder="First Name" ngModel (change)="formControlIsDirty()" required>
+            </div>
 
-                        <div class="form-control-feedback" *ngIf="firstname.errors && (firstname.dirty || firstname.touched)">
-                            <p *ngIf="firstname.errors.required">Firstname is required</p>
-                        </div>
+            <div class="form-control-feedback" *ngIf="firstname.errors && (firstname.dirty || firstname.touched)">
+              <p *ngIf="firstname.errors.required">Firstname is required</p>
+            </div>
 
 
-                        <div class="form-group col-md-6">
-                            <input [formControl]="lastname" type="lastname" class="form-control" id="LastName" placeholder="Last Name" ngModel required>
-                        </div>
+            <div class="form-group col-md-6">
+              <input [formControl]="lastname" type="lastname" class="form-control" id="LastName" placeholder="Last Name"
+                ngModel required>
+            </div>
 
-                        <div class="form-control-feedback" *ngIf="lastname.errors && (lastname.dirty || lastname.touched)">
-                            <p *ngIf="lastname.errors.required">Lastname is required</p>
-                        </div>
+            <div class="form-control-feedback" *ngIf="lastname.errors && (lastname.dirty || lastname.touched)">
+              <p *ngIf="lastname.errors.required">Lastname is required</p>
+            </div>
 
-                        <div class="form-group col-md-6">
-                            <input [formControl]="email" type="email" class="form-control" id="Email" placeholder="Email" ngModel required>
-                        </div>
+            <div class="form-group col-md-6">
+              <input [formControl]="email" type="email" class="form-control" id="Email" placeholder="Email" ngModel
+                required>
+            </div>
 
-                        <div class="form-control-feedback" *ngIf="email.errors && (email.dirty || email.touched)">
-                            <p *ngIf="email.errors.required">Email is required</p>
-                        </div>
+            <div class="form-control-feedback" *ngIf="email.errors && (email.dirty || email.touched)">
+              <p *ngIf="email.errors.required">Email is required</p>
+            </div>
 
             <div class="form-group col-md-6">
               <input [formControl]="instituationaffiliation" type="inputinstituation" class="form-control"
@@ -171,7 +174,8 @@
 
         <!-- <button type="button" class="btn bg-warning" (click)="saveSubmissionInformation()">Test Submit</button> -->
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadFilesModal" [disabled]="!this.isFirstStepValidated" >Next</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadFilesModal"
+          [disabled]="!this.isFirstStepValidated">Next</button>
       </div>
     </div>
   </div>
@@ -216,26 +220,34 @@
                   </div>
                 </div>
               </form>
-              <button class="btn btn-primary text-white mr-1" (click)=uploadForValidation() style="width: 50%;" >
+              <button class="btn btn-primary text-white mr-1" (click)=uploadForValidation() style="width: 50%;">
                 Upload Files for validation
               </button>
-              <button class="btn btn-secondary text-white" (click)=validate() [disabled]="!this.isFilesUploadedForValidation">
+              <button class="btn btn-secondary text-white" (click)=validate() *ngIf="this.isFilesUploadedForValidation">
                 Validate Files
               </button>
             </div>
           </div>
         </form>
-        <div *ngIf="(this.validationStatus.isValidated)" class="alert alert-success mt-2" role="alert">
-          {{this.validationStatus.messages[0]}}
+
+        <div *ngIf="(this.validationStatus.isValidated) && (this.validationStatus.messages[0])"
+          style="overflow-wrap: break-word;">
+          <div *ngFor="let message of this.validationStatus.messages" class="alert alert-success mt-2" role="alert">
+            {{message}}
+          </div>
         </div>
+
         <div *ngIf="(!this.validationStatus.isValidated) && (this.validationStatus.messages[0])"
-          class="alert alert-danger mt-2" role="alert">
-          {{this.validationStatus.messages[0]}}
+          style="overflow-wrap: break-word;">
+          <div *ngFor="let message of this.validationStatus.messages" class="alert alert-danger mt-2" role="alert">
+            {{message}}
+          </div>
         </div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" [disabled]="!this.isValidated"
+        <button type="button" class="btn btn-success" [disabled]="!this.isValidated"
           (click)="saveSubmissionInformation()" data-dismiss="modal" onclick="$('#modal1').modal('hide')">Confirm File
           submission</button>
       </div>
