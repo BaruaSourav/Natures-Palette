@@ -64,16 +64,28 @@
                 <form>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <input [formControl]="firstname" type="firstname" class="form-control" id="FirstName" placeholder="First Name" required>
+                            <input [formControl]="firstname" type="firstname" class="form-control" id="FirstName" placeholder="First Name" ngModel required>
+                        </div>
+
+                        <div class="form-control-feedback" *ngIf="firstname.errors && (firstname.dirty || firstname.touched)">
+                            <p *ngIf="firstname.errors.required">Firstname is required</p>
                         </div>
 
 
                         <div class="form-group col-md-6">
-                            <input [formControl]="lastname" type="lastname" class="form-control" id="LastName" placeholder="Last Name" required>
+                            <input [formControl]="lastname" type="lastname" class="form-control" id="LastName" placeholder="Last Name" ngModel required>
+                        </div>
+
+                        <div class="form-control-feedback" *ngIf="lastname.errors && (lastname.dirty || lastname.touched)">
+                            <p *ngIf="lastname.errors.required">Lastname is required</p>
                         </div>
 
                         <div class="form-group col-md-6">
-                            <input [formControl]="email" type="email" class="form-control" id="Email" placeholder="Email" required>
+                            <input [formControl]="email" type="email" class="form-control" id="Email" placeholder="Email" ngModel required>
+                        </div>
+
+                        <div class="form-control-feedback" *ngIf="email.errors && (email.dirty || email.touched)">
+                            <p *ngIf="email.errors.required">Email is required</p>
                         </div>
 
                         <div class="form-group col-md-6">

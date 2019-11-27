@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SubmissionService } from './../../Service/submission.service';
 import { Submission } from './../../Models/Submission';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-upload',
@@ -26,10 +26,10 @@ export class UploadComponent implements OnInit {
   public metadataFile: File = null;
   public rawDataFile: File = null;
 
-  firstname = new FormControl('');
-  lastname = new FormControl('');
+  firstname = new FormControl('', Validators.required);
+  lastname = new FormControl('', Validators.required);
   typeofdata = new FormControl('');
-  email = new FormControl('');
+  email = new FormControl('', Validators.required);
   instituationaffiliation = new FormControl('');
   sourceofdata = new FormControl('');
   databeenpublished = new FormControl('');
@@ -56,6 +56,10 @@ export class UploadComponent implements OnInit {
     // initial values
     this.rawFileName = 'Choose Files';
     this.metadatafilename = 'Choose Files';
+    this.email = new FormControl('', [
+      Validators.required,
+      ]);
+    
   }
 
   ngOnInit() {
