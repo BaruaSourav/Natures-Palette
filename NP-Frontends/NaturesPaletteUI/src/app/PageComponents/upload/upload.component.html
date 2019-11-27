@@ -75,7 +75,7 @@
                 <form>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <input [formControl]="firstname" type="firstname" class="form-control" id="FirstName" placeholder="First Name" ngModel required>
+                            <input [formControl]="firstname" type="firstname" class="form-control" id="FirstName" placeholder="First Name" ngModel (change)="formControlIsDirty()" required>
                         </div>
 
                         <div class="form-control-feedback" *ngIf="firstname.errors && (firstname.dirty || firstname.touched)">
@@ -171,7 +171,7 @@
 
         <!-- <button type="button" class="btn bg-warning" (click)="saveSubmissionInformation()">Test Submit</button> -->
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadFilesModal">Next</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadFilesModal" [disabled]="!this.isFirstStepValidated" >Next</button>
       </div>
     </div>
   </div>
