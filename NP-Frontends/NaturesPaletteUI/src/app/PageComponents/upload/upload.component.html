@@ -71,12 +71,11 @@
         <h5 class="modal-title" id="step1modaltitle">Submission Step 1: Information</h5>
       </div>
 
-<<<<<<< HEAD
             <div class="modal-body">
                 <form>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <input [formControl]="firstname" type="firstname" class="form-control" id="FirstName" placeholder="First Name" ngModel required>
+                            <input [formControl]="firstname" type="firstname" class="form-control" id="FirstName" placeholder="First Name" ngModel (change)="formControlIsDirty()" required>
                         </div>
 
                         <div class="form-control-feedback" *ngIf="firstname.errors && (firstname.dirty || firstname.touched)">
@@ -99,25 +98,6 @@
                         <div class="form-control-feedback" *ngIf="email.errors && (email.dirty || email.touched)">
                             <p *ngIf="email.errors.required">Email is required</p>
                         </div>
-=======
-      <div class="modal-body">
-        <form>
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <input [formControl]="firstname" type="firstname" class="form-control" id="FirstName"
-                placeholder="First Name" required>
-            </div>
-
-
-            <div class="form-group col-md-6">
-              <input [formControl]="lastname" type="lastname" class="form-control" id="LastName" placeholder="Last Name"
-                required>
-            </div>
-
-            <div class="form-group col-md-6">
-              <input [formControl]="email" type="email" class="form-control" id="Email" placeholder="Email" required>
-            </div>
->>>>>>> cff3af839ceb4feb6016856a35bc3b1016dd2432
 
             <div class="form-group col-md-6">
               <input [formControl]="instituationaffiliation" type="inputinstituation" class="form-control"
@@ -191,7 +171,7 @@
 
         <!-- <button type="button" class="btn bg-warning" (click)="saveSubmissionInformation()">Test Submit</button> -->
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadFilesModal">Next</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadFilesModal" [disabled]="!this.isFirstStepValidated" >Next</button>
       </div>
     </div>
   </div>

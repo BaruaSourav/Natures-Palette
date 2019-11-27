@@ -146,6 +146,7 @@ validationroutes
           rawFileIsConsistent = true;
         else 
           rawFileIsConsistent = false;
+          
 
       });
 
