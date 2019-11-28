@@ -129,7 +129,7 @@ validationroutes
           let temp = file.entryName.split('/')[1].split('.');
           temp.pop();
           temp.pop();
-          console.log(temp.join('.'));
+          //console.log(temp.join('.'));
           rawDataFiles.push(temp.join('.'));
           //console.log(rawDataFiles.length);
         });
