@@ -25,17 +25,6 @@ const appRoutes: Routes = [
   { path: 'upload', component: UploadComponent },
   { path: 'search', component: SearchComponent},
   { path: 'modification', component: ModificationComponent},
-  // { path: 'hero/:id', component: HeroDetailComponent },
-  // {
-  //   path: 'heroes',
-  //   component: HeroListComponent,
-  //   data: { title: 'Heroes List' }
-  // },
-  // { path: '',
-  //   redirectTo: '/heroes',
-  //   pathMatch: 'full'
-  // },
-  // { path: '**', component: PageNotFoundComponent }
 ];
 
 // TODO: Vivek [You need to add any modules that I ask you to do into this is the base module for the entire application]

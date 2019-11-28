@@ -16,7 +16,7 @@ searchroutes.route("/").post(upload.none(), function(req, res) {
 
   var obj = req.body;
   Object.keys(obj).forEach((key) => (obj[key] == null || obj[key]=="") && delete obj[key]); 
-  console.log(obj);
+  // console.log(obj);
   MetadataInfoModel.find(obj, function(err, result) {
     if (err) throw err;
     console.log(result);

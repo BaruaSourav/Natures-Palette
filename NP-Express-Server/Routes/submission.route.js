@@ -49,7 +49,8 @@ submissionroutes.route("/add").post(upload.none(), function(req, res) {
     zipEntries.forEach(entry => {
       zippedRawFile.extractEntryTo(entry.entryName, rawFileDirectory, false, true);
     });
-    fs.unlink(rawfilepath);
+    //deleting the zip raw files
+    fs.unlinkSync(rawfilepath);
     //zippedRawFile.extractAllTo(rawFileDirectory,true);
 
   };
