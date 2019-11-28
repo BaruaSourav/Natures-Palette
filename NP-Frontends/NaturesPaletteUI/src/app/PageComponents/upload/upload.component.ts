@@ -135,11 +135,11 @@ export class UploadComponent implements OnInit {
     }
   }
   formControlIsDirty() {
-    if (this.firstname.errors != null) { // in this if, check for all the formcontrol's error using && operator, if there's error the next button will be disabled
+    if (this.firstname.errors != null && this.lastname.errors != null && this.email.errors != null && this.sourceofdata.errors != null && this.typeofdata.errors != null) { // in this if, check for all the formcontrol's error using && operator, if there's error the next button will be disabled
       this.isFirstStepValidated = false;
       console.log(this.firstname.errors);
-
-    }
+      
+  }
     else {
       this.isFirstStepValidated = true;
     }
