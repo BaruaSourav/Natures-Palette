@@ -10,6 +10,7 @@ import { NavMenuComponent} from './SharedComponents/nav-menu/nav-menu.component'
 import { UploadComponent } from './PageComponents/upload/upload.component';
 import { FooterComponent } from './SharedComponents/footer/footer.component';
 import { SearchComponent } from './PageComponents/search/search.component';
+import { ModificationComponent } from './PageComponents/modification/modification.component';
 
 import { RouterModule, Routes } from '@angular/router';
 
@@ -18,10 +19,12 @@ import {SubmissionService} from './Service/submission.service';
 
 
 
+
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'upload', component: UploadComponent },
   { path: 'search', component: SearchComponent},
+  { path: 'modification', component: ModificationComponent},
   // { path: 'hero/:id', component: HeroDetailComponent },
   // {
   //   path: 'heroes',
@@ -43,7 +46,8 @@ const appRoutes: Routes = [
     NavMenuComponent,
     UploadComponent,
     FooterComponent,
-    SearchComponent
+    SearchComponent,
+    ModificationComponent
   ],
   imports: [
     BrowserModule,
