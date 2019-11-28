@@ -4,6 +4,9 @@ const Schema = mongoose.Schema;
 
 let MetadataInformation = new Schema(
     {
+        FileName:{
+            type:String
+        },
         metadataCollectionId: {
             type: Number
         },
