@@ -74,34 +74,34 @@
       <div class="modal-body">
         <form>
           <div class="form-row">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-12">
               <input [formControl]="firstname" type="firstname" class="form-control" id="FirstName"
                 placeholder="First Name" ngModel (change)="formControlIsDirty()" required>
             </div>
 
             <div class="form-control-feedback" *ngIf="firstname.errors && (firstname.dirty || firstname.touched)">
-              <p *ngIf="firstname.errors.required">Firstname is required</p>
+              <p class= "error-text" *ngIf="firstname.errors.required">Firstname is required</p>
             </div>
 
 
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-12">
               <input [formControl]="lastname" type="lastname" class="form-control" id="LastName" placeholder="Last Name"
                 ngModel (change)="formControlIsDirty()" required>
             </div>
 
             <div class="form-control-feedback" *ngIf="lastname.errors && (lastname.dirty || lastname.touched)">
-              <p *ngIf="lastname.errors.required">Lastname is required</p>
+              <p class= "error-text" *ngIf="lastname.errors.required">Lastname is required</p>
             </div>
 
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-12">
               <input [formControl]="email" type="email" class="form-control" id="Email" placeholder="Email" ngModel (change)="formControlIsDirty()" required>
             </div>
 
             <div class="form-control-feedback" *ngIf="email.errors && (email.dirty || email.touched)">
-              <p *ngIf="email.errors.required">Email is required</p>
+              <p class= "error-text" *ngIf="email.errors.required">Email is required</p>
             </div>
 
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-12">
               <input [formControl]="instituationaffiliation" type="inputinstituation" class="form-control"
                 id="inputInstituationAffiliation4" placeholder="Institution Affiliation">
             </div>
