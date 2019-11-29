@@ -111,7 +111,7 @@
     </div>
 
     <div class="col-md-2">
-      <button *ngIf="searchResult.length != 0" type="button" id="downloadButton" class="btn btn-primary download-button">Download All</button>
+      <button *ngIf="searchResult.length != 0" type="button" id="downloadButton" class="btn btn-primary download-button" (click)="download()">Download All</button>
     </div>
   </div>
   <table *ngIf="searchResult.length != 0" class="table table-bordered">
