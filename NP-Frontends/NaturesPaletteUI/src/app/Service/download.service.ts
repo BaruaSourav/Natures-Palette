@@ -9,10 +9,12 @@ export class DownloadService {
   config: NaturesPaletteConfig;
   uri: string;
   constructor(private http: HttpClient) {
-
+    this.config = new NaturesPaletteConfig();
+    this.uri = this.config.apiurl;
   }
-  download(searchResult:any[]) {
+  download(searchResult: any[]) {
     console.log(searchResult);
+    console.log("test");
     return this.http.post(`${this.uri}/download`, searchResult);
   }
 }

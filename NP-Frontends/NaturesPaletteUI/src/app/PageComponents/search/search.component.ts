@@ -4,6 +4,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormControl } from "@angular/forms";
 import { DownloadService } from "../../Service/download.service";
 
+
 @Component({
   selector: "app-search",
   templateUrl: "./search.component.html",
@@ -34,6 +35,7 @@ export class SearchComponent implements OnInit {
     private downloadService: DownloadService
   ) {
     this.searchInfo = new Search();
+    this.searchResult = null;
   }
 
   ngOnInit() {}
@@ -67,6 +69,8 @@ export class SearchComponent implements OnInit {
   }
 
   download() {
-    this.downloadService.download(this.searchResult);
+    this.downloadService.download(this.searchResult).subscribe(res =>{
+      console.log(res);
+    });
   }
 }

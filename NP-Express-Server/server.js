@@ -27,6 +27,8 @@ const app = express();
 
 //app.use(connect.bodyParser());
 app.set('json spaces', 40);
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(bodyParser.json());
 app.use(cors());
 //create a cors middleware

@@ -105,16 +105,16 @@
   </div>
 
   <hr>
-  <div class="row">
+  <div *ngIf="searchResult != null" class="row">
     <div class="col-md-10">
       <span >{{searchResult.length}} results</span>
     </div>
 
     <div class="col-md-2">
-      <button *ngIf="searchResult.length != 0" type="button" id="downloadButton" class="btn btn-primary download-button" (click)="download()">Download All</button>
+      <button *ngIf="searchResult != null" type="button" id="downloadButton" class="btn btn-primary download-button" (click)="download()">Download All</button>
     </div>
   </div>
-  <table *ngIf="searchResult.length != 0" class="table table-bordered">
+  <table *ngIf="searchResult != null" class="table table-bordered">
     <thead class="thead-dark">
       <tr>
         <th scope="col">genus</th>
