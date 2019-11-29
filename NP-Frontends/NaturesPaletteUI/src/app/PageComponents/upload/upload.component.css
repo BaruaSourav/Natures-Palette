@@ -22,3 +22,7 @@
 .card_for_template {
     background-color: rgb(208, 241, 253);
 }
+
+.error-text {
+    color: red;
+}
