@@ -14,7 +14,7 @@ export class DownloadService {
   }
   download(searchResult: any[]) {
     console.log(searchResult);
-    console.log("test");
+    //console.log("test");
     return this.http.post(`${this.uri}/download`, searchResult);
   }
 }
