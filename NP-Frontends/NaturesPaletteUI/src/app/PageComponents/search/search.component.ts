@@ -14,6 +14,7 @@ import { DownloadService } from "../../Service/download.service";
 export class SearchComponent implements OnInit {
   private searchInfo: Search;
   public searchResult;
+  public isDownloadPackageReady: boolean;
 
   searchtext = new FormControl("");
   institutioncode = new FormControl("");
@@ -36,6 +37,7 @@ export class SearchComponent implements OnInit {
   ) {
     this.searchInfo = new Search();
     this.searchResult = null;
+    this.isDownloadPackageReady = false;
   }
 
   ngOnInit() {}
@@ -69,8 +71,13 @@ export class SearchComponent implements OnInit {
   }
 
   download() {
-    this.downloadService.download(this.searchResult).subscribe(res =>{
+    this.downloadService.download(this.searchResult).subscribe((res : StatusResponse) =>{
       console.log(res);
+      if(res.status == 'success')
+        this.isDownloadPackageReady = true;
     });
   }
+}
+interface StatusResponse{
+  status:string;
 }

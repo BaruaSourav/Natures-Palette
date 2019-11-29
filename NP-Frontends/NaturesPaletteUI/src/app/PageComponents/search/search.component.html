@@ -3,9 +3,11 @@
     <div class="row">
       <div class="col-md-12">
         <div class="input-group mb-3">
-          <input [formControl]="searchtext" type="searchText" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="search-button">
+          <input [formControl]="searchtext" type="searchText" class="form-control" placeholder="Search..."
+            aria-label="Search" aria-describedby="search-button">
           <div class="input-group-append">
-            <button class="btn btn-success go-button" type="button" id="search-button" (click)="SearchInformation()">Go!</button>
+            <button class="btn btn-success go-button" type="button" id="search-button"
+              (click)="SearchInformation()">Go!</button>
           </div>
         </div>
       </div>
@@ -14,18 +16,21 @@
     <div class="row">
       <div class="col-md-4">
         <div class="form-group">
-          <input [formControl]="institutioncode" type="institutionCode" class="form-control" id="institutionCode" placeholder="institutionCode">
+          <input [formControl]="institutioncode" type="institutionCode" class="form-control" id="institutionCode"
+            placeholder="institutionCode">
         </div>
       </div>
       <div class="col-md-4">
-          <div class="form-group">
-            <input [formControl]="collectioncode" type="collectionCode" class="form-control" id="collectionCode" placeholder="collectionCode">
-          </div>
+        <div class="form-group">
+          <input [formControl]="collectioncode" type="collectionCode" class="form-control" id="collectionCode"
+            placeholder="collectionCode">
+        </div>
       </div>
       <div class="col-md-4">
-          <div class="form-group">
-            <input [formControl]="cataloguenumber" type="catalogueNumber" class="form-control" id="catalogueNumber" placeholder="catalogueNumber">
-          </div>
+        <div class="form-group">
+          <input [formControl]="cataloguenumber" type="catalogueNumber" class="form-control" id="catalogueNumber"
+            placeholder="catalogueNumber">
+        </div>
       </div>
     </div>
 
@@ -36,14 +41,14 @@
         </div>
       </div>
       <div class="col-md-4">
-          <div class="form-group">
-            <input [formControl]="order" type="order" class="form-control" id="order" placeholder="order">
-          </div>
+        <div class="form-group">
+          <input [formControl]="order" type="order" class="form-control" id="order" placeholder="order">
+        </div>
       </div>
       <div class="col-md-4">
-          <div class="form-group">
-            <input [formControl]="family" type="family" class="form-control" id="family" placeholder="family">
-          </div>
+        <div class="form-group">
+          <input [formControl]="family" type="family" class="form-control" id="family" placeholder="family">
+        </div>
       </div>
     </div>
 
@@ -55,12 +60,14 @@
       </div>
       <div class="col-md-4">
         <div class="form-group">
-          <input [formControl]="specificepithet" type="specificEpithet" class="form-control" id="specificEpithet" placeholder="specificEpithet">
+          <input [formControl]="specificepithet" type="specificEpithet" class="form-control" id="specificEpithet"
+            placeholder="specificEpithet">
         </div>
       </div>
       <div class="col-md-4">
         <div class="form-group">
-          <input [formControl]="infraspecificepithet" type="infraspecificEpithet" class="form-control" id="infraspecificEpithet" placeholder="infraspecificEpithet">
+          <input [formControl]="infraspecificepithet" type="infraspecificEpithet" class="form-control"
+            id="infraspecificEpithet" placeholder="infraspecificEpithet">
         </div>
       </div>
     </div>
@@ -107,11 +114,12 @@
   <hr>
   <div *ngIf="searchResult != null" class="row">
     <div class="col-md-10">
-      <span >{{searchResult.length}} results</span>
+      <span>{{searchResult.length}} results</span>
     </div>
 
     <div class="col-md-2">
-      <button *ngIf="searchResult != null" type="button" id="downloadButton" class="btn btn-primary download-button" (click)="download()">Download All</button>
+      <button *ngIf="searchResult != null" data-toggle="modal" data-target="#downloadModal" type="button"
+        id="downloadButton" class="btn btn-primary download-button" (click)="download()">Download All</button>
     </div>
   </div>
   <table *ngIf="searchResult != null" class="table table-bordered">
@@ -126,7 +134,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let result of searchResult; index as i"> <!-- adding of to retrive data -->
+      <tr *ngFor="let result of searchResult; index as i">
+        <!-- adding of to retrive data -->
         <td>{{ result.genus }}</td>
         <td>{{ result.specificEpithet }}</td>
         <td>{{ result.infraspecificEpithet }}</td>
@@ -136,4 +145,32 @@
       </tr>
     </tbody>
   </table>
+</div>
+
+<div id="downloadModal" class="modal" tabindex="-1" role="">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Preparing your download package</h5>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+      </div>
+      <div class="modal-body">
+        <p *ngIf="!this.isDownloadPackageReady" class="text-center">It usually takes few moments to prepare your
+          download package.</p>
+        <img style="margin-left: 100px;" *ngIf="!this.isDownloadPackageReady" src="assets/Images/loading.gif">
+        <img *ngIf="this.isDownloadPackageReady" style="height: 100px;
+        margin-left: 38%;" src="assets/Images/successicon.png">
+        <p *ngIf="this.isDownloadPackageReady" class="text-center">Your Package is ready to download</p>
+      </div>
+      <div class="modal-footer">
+        <button onclick="window.open('http://10.20.250.157:4000/downloads/NPDownloadPackage.zip')" type="button" class="btn btn-primary"
+          [disabled]="!this.isDownloadPackageReady">Download</button>
+          <button type="button" class="btn-secondary" data-dismiss="modal" aria-label="Close">
+            Close
+          </button>
+      </div>
+    </div>
+  </div>
 </div>

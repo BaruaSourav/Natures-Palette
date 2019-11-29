@@ -150,7 +150,7 @@ validationroutes
           
         else {
           rawFileIsConsistent = false;
-          messages.push(difference+" files not found")
+          messages.push(difference+" files not found");
         }
           
         

@@ -4,6 +4,7 @@ bodyParser = require('body-parser');
 cors = require('cors');
 mongoose = require('mongoose');
 var multer = require('multer');
+var serveIndex = require('serve-index');
 
 config = require('./DBConfiguration');
 
@@ -21,10 +22,10 @@ mongoose.connect(config.DB, { useNewUrlParser: true }).then(
     err => { console.log('Can not connect to the database' + err) }
 );
 
-//express app configuarition
+//express app configuration
 const app = express();
 //pointing to the submission route
-
+app.use('/downloads', express.static('filepersistance/tempDownloadFiles'), serveIndex('filepersistance/tempDownloadFiles', {'icons': true}))
 //app.use(connect.bodyParser());
 app.set('json spaces', 40);
 app.use(bodyParser.json({limit: '50mb'}));
