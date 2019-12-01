@@ -35,23 +35,30 @@ downloadroutes.route("/").post(upload.none(), function(req, res) {
     tempList.push(row);
   });
   // fastcsv.write(tempList, { headers: true }).pipe(ws);
-  fastcsv.writeToPath(
-    path.resolve(
-      __dirname,
-      "../filepersistance/tempDownloadFiles/metadata.csv"
-    ),
-    tempList,
-    { headers: true }
-  );
-  rawFileZip.writeZip(path.resolve(downloadFilesDir + "/rawfiles.zip"));
-  var finalPackageZip = new AdmZip();
-  finalPackageZip.addLocalFile(
-    path.resolve(downloadFilesDir + "/" + "metadata.csv")
-  );
-  finalPackageZip.addLocalFile(
-    path.resolve(downloadFilesDir + "/" + "rawfiles.zip")
-  );
-  finalPackageZip.writeZip(path.resolve(downloadFilesDir + "/NPDownloadPackage.zip"));
+  fastcsv
+    .writeToPath(
+      path.resolve(
+        __dirname,
+        "../filepersistance/tempDownloadFiles/metadata.csv"
+      ),
+      tempList,
+      { headers: true }
+    )
+    .on("finish", function() {
+      console.log("test");
+      rawFileZip.writeZip(path.resolve(downloadFilesDir + "/rawfiles.zip"));
+      var finalPackageZip = new AdmZip();
+      finalPackageZip.addLocalFile(
+        path.resolve(downloadFilesDir + "/" + "metadata.csv")
+      );
+      finalPackageZip.addLocalFile(
+        path.resolve(downloadFilesDir + "/" + "rawfiles.zip")
+      );
+      finalPackageZip.writeZip(
+        path.resolve(downloadFilesDir + "/NPDownloadPackage.zip")
+      );
+    });
+
   //conso
   //console.log(tempList);
   //ws.close();
@@ -61,7 +68,7 @@ downloadroutes.route("/").post(upload.none(), function(req, res) {
   //   path.resolve(downloadFilesDir + "/NPDownloadPackage.zip"),
   //   "NPDownloadPackage.zip"
   // );
-  res.json({status:'success'});
+  res.json({ status: "success" });
 });
 
 module.exports = downloadroutes;

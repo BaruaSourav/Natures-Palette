@@ -15,6 +15,7 @@ export class SearchComponent implements OnInit {
   private searchInfo: Search;
   public searchResult;
   public isDownloadPackageReady: boolean;
+  public isSearching :boolean;
 
   searchtext = new FormControl("");
   institutioncode = new FormControl("");
@@ -38,11 +39,13 @@ export class SearchComponent implements OnInit {
     this.searchInfo = new Search();
     this.searchResult = null;
     this.isDownloadPackageReady = false;
+    this.isSearching = false;
   }
 
   ngOnInit() {}
 
   SearchInformation() {
+    this.isSearching = true;
     // Constructing the searchinfo instance
     this.searchInfo.searchText = this.searchtext.value;
     this.searchInfo.institutionCode = this.institutioncode.value;
@@ -64,6 +67,7 @@ export class SearchComponent implements OnInit {
     this.service.search(this.searchInfo).subscribe(result => {
       console.log(result);
       this.searchResult = result;
+      this.isSearching = false;
     });
     //console.log(this.searchResult);
 

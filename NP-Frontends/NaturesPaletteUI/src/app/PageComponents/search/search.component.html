@@ -2,6 +2,7 @@
   <form>
     <div class="row">
       <div class="col-md-12">
+        <p>Search on Nature's Palette repository using Darwin Core Terms on below panel.</p>
         <div class="input-group mb-3">
           <input [formControl]="searchtext" type="searchText" class="form-control" placeholder="Search..."
             aria-label="Search" aria-describedby="search-button">
@@ -97,6 +98,8 @@
         </div>
       </div>
     </div>
+    <button class="btn btn-success go-button" type="button" id="search-button"
+              (click)="SearchInformation()">Go!</button>
   </form>
 
   <div class="row">
@@ -108,6 +111,8 @@
           <button type="button" class="btn btn-outline-success">Color Space</button>
         </div>
       </div>
+      <img style="margin-left: 45%;" *ngIf="this.isSearching" src="assets/Images/searching.gif">
+
     </div>
   </div>
 
@@ -133,6 +138,7 @@
         <th scope="col">patch</th>
       </tr>
     </thead>
+
     <tbody>
       <tr *ngFor="let result of searchResult; index as i">
         <!-- adding of to retrive data -->
@@ -166,8 +172,8 @@
       </div>
       <div class="modal-footer">
         <button onclick="window.open('http://10.20.250.157:4000/downloads/NPDownloadPackage.zip')" type="button" class="btn btn-primary"
-          [disabled]="!this.isDownloadPackageReady">Download</button>
-          <button type="button" class="btn-secondary" data-dismiss="modal" aria-label="Close">
+          [disabled]="!this.isDownloadPackageReady">Download the package</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">
             Close
           </button>
       </div>
