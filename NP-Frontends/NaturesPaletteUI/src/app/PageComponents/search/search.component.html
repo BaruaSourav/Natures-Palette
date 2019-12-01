@@ -171,7 +171,7 @@
         <p *ngIf="this.isDownloadPackageReady" class="text-center">Your Package is ready to download</p>
       </div>
       <div class="modal-footer">
-        <button onclick="window.open('http://10.20.250.157:4000/downloads/NPDownloadPackage.zip')" type="button" class="btn btn-primary"
+        <button onclick="window.open('http://ec2-3-85-164-248.compute-1.amazonaws.com:4000/downloads/NPDownloadPackage.zip')" type="button" class="btn btn-primary"
           [disabled]="!this.isDownloadPackageReady">Download the package</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">
             Close
